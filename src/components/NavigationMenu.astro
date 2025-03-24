@@ -1,0 +1,173 @@
+---
+import Logo from "./Logo.astro"
+import Close from "./svg/Close.astro"
+import Menu from "./svg/Menu.astro"
+---
+<div class="contenedorNavBar desktop close">
+    <button class="btnMenu">
+        <Menu 
+            width = 32
+            heigth = 90
+            color = var(--grey)
+        />
+    </button>
+    <nav>
+        <button class="btnClose">
+            <Close 
+                width = 32
+                heigth = 32
+                color = var(--grey)
+            />
+        </button>
+        <div class="expandedLogo">
+            <Logo className="logo" href="./">
+                <picture class="contenedorLogo" slot="before">
+                    <img class="contenedorLogo_img" src="./public/icons/whiteLogo.png" alt="Logo de Leonardo Dillon">
+                </picture>
+                LDILLON
+            </Logo>
+        </div>
+        <a href="">
+            Inicio
+        </a>
+        <a href="#aboutMe">
+            Sobre mí
+        </a>
+        <a href="#proyects">
+            Proyectos
+        </a>
+        <a href="#contact">
+            Contacto
+        </a>
+    </nav>
+</div>
+
+<style>
+    picture.contenedorLogo img.contenedorLogo_img{
+        width: 100%;
+    }
+    div.contenedorNavBar.desktop button.btnMenu{
+        display: none;
+    }
+    div.contenedorNavBar.desktop nav{
+        display: block;
+    }
+    
+    div.contenedorNavBar nav{
+        display: none;
+    }
+    div.contenedorNavBar button{
+        background-color: transparent;
+        border-radius: 12px;
+        border: 0;
+        cursor: pointer;
+    }
+    picture.contenedorLogo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--font-24);
+    }
+    /* NAVBAR Desktop */
+    div.contenedorNavBar.desktop .expandedLogo,
+    div.contenedorNavBar.desktop button.btnClose,
+    div.contenedorNavBar.desktop button.btnMenu{
+        display: none;
+    }
+    @media ( width < 500px ){
+        /* NAVBAR movile */
+        div.contenedorNavBar{
+            background-color: var(--light--blue);
+            z-index: 10;
+        }
+        div.contenedorNavBar nav{
+            width: 90%;
+            max-width: 360px;
+            padding: 42px 12px 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            gap: 42px;
+            background-color: var(--light--blue);
+            border-bottom-left-radius: 24px;
+            position: fixed;
+            top: 0;
+            right: -1000px;
+            transform: translateX(1000px);
+            opacity: 0;
+            transition: transform .5s ease-out, opacity .3s ease-out;
+        }
+        div.contenedorNavBar nav.open{
+            right: 0;
+            transform: translateX(0);
+            opacity: 1;
+            box-shadow: 2px -2px 12px var(--grey);
+        }
+        div.contenedorNavBar nav .expandedLogo{
+            display: flex;
+            justify-content: start;
+            width: 80%;
+        }
+        div.contenedorNavBar nav button.btnClose{
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid var(--grey);
+            cursor: pointer;
+        }
+        div.contenedorNavBar nav a{
+            width: 80%;
+            padding: 0 6px;
+            color: var(--text--white);
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--text--white);
+            font-size: var(--font-22);
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
+
+    
+</style>
+
+<script>
+    let contentcontenedorNavBar = document.querySelector('div.contenedorNavBar')
+    let btnMenu = document.querySelector('button.btnMenu')
+    let btnClose = document.querySelector('button.btnClose')
+    let nav = document.querySelector('nav')
+    let ancords = document.querySelectorAll('nav a')
+    window.addEventListener('load', () => {
+        let viewWidth = window.innerWidth
+        if(viewWidth < 500){
+            contentcontenedorNavBar?.classList.remove("desktop")
+        }else{
+            contentcontenedorNavBar?.classList.add("desktop")
+        }
+    })
+    window.addEventListener('resize', () => {
+        let viewWidth = window.innerWidth
+        if(viewWidth < 500){
+            contentcontenedorNavBar?.classList.remove("desktop")
+        }else{
+            contentcontenedorNavBar?.classList.add("desktop")
+        }
+    })
+    btnMenu?.addEventListener('click', (e) => {
+        nav?.classList.add('open')
+    })
+    btnClose?.addEventListener('click', () => {
+        nav?.classList.remove('open')
+    })
+    ancords.forEach(a => {
+        a.addEventListener("click", (e) => {
+            nav?.classList.remove('open')
+        })
+    })
+</script>

@@ -1,0 +1,23 @@
+---
+const { className, href } = Astro.props
+---
+<a class={className} href={href}>
+    <slot name="before"/>
+    <slot />
+    <slot name="after"/>
+</a>
+
+<style>
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        font-size: var(--font-28);
+        font-weight: 600;
+        color: var(--text--white);
+        line-height: var(--font-28);
+        text-decoration: none;
+        letter-spacing: 2px;
+    }
+</style>

@@ -1,0 +1,141 @@
+<section class="introduction">
+    <div>
+        <h3>
+            Hola!!, Soy 
+        </h3>
+        <h1>
+            Leonardo Dillon
+        </h1>
+        <p>
+            Desarrollador Full-Stack <span> 💻 </span>
+        </p>
+        <a href="#aboutMe">
+            Sobre Mí
+        </a>
+        <a href="">
+            Contactame
+        </a>
+    </div>
+    <picture>
+        <img src="../../../public/pictures/a4.png" alt="">
+        <div class="deco_1"></div>
+        <div class="deco_2"></div>
+    </picture>
+</section>
+
+<style>
+    section.introduction{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 56px 0;
+        overflow: hidden;
+    }
+    section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(rgba(111, 238, 255, 0.03), transparent 30%) 1px 1px;
+        background-size: 50px 50px; 
+        animation: starsMove 10s linear infinite; 
+        z-index: -1; 
+    }
+    section.introduction div{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+    section.introduction div h3{
+        color: var(--text--color-yellow);
+        font-size: var(--font-20);
+        opacity: .8;
+        font-weight: 400;
+    }
+    section.introduction div h1{
+        width: min-content;
+        font-size: var(--font-64);
+    } 
+    section.introduction div h1 span{
+        margin-left: 24px;
+    }
+    section.introduction div p{
+        margin: 12px 0;
+        font-size: var(--font-20);
+        opacity: .8;
+    }
+    section.introduction div p span{
+        margin-left: 12px;
+        font-size: var(--font-28);
+    }
+    section.introduction div a{
+        width: max-content;
+        margin: 4px 0 ;
+        padding: 6px 24px;
+        border-radius: 24px;
+        border: 2px solid var(--border--yellow);
+        background-color: var(--background--color-blue);
+        color: var(--text--color-white);
+        font-size: var(--font-18);
+        letter-spacing: 2px;
+        font-weight: 400;
+    }
+    section.introduction div a:active{
+        background-color: var( --hover--color--primary);
+    }
+    section picture{
+        position: relative;
+        width: 60%;
+        margin: 42px auto 0;
+        padding: 1px;
+        display: flex;
+        align-items: center;
+        border-radius: 24px;
+        overflow: hidden;
+        z-index: 3;
+    }
+    section picture img{
+        width: 100%;
+        border-radius: 24px;
+        z-index: 2;
+    }
+    section picture div.deco_1{
+        width: 90px;
+        height: 90px;
+        position: absolute;
+        top: 0px ;
+        right: 0px;
+        background-color: var(--background--color-yellow);
+        z-index: 0;
+        transition: top .3s ease-out;
+    }
+    section picture div.deco_2{
+        width: 90px;
+        height: 90px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        background-color: var(--background--color-yellow);
+        z-index: 0;
+        transition: bottom .3s ease-out;
+    }
+    section picture:hover div.deco_1{
+        top: calc(100% - 90px);
+    }
+    section picture:hover div.deco_2{
+        bottom: calc(100% - 90px);
+    } 
+    @keyframes starsMove {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(200px, 300px); 
+        }
+    }
+</style>

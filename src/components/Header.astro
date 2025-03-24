@@ -1,0 +1,39 @@
+---
+    import Logo from "./Logo.astro";
+    import NavigationMenu from "./NavigationMenu.astro";
+---
+
+<header class="dark">
+    <Logo className="logo" href="./">
+        <picture class="contenedorLogo" slot="before">
+            <img class="contenedorLogo_img" src="./public/icons/whiteLogo.png" alt="Logo de Leonardo Dillon">
+        </picture>
+        LDILLON
+    </Logo>
+    <NavigationMenu />
+</header>
+
+<style>
+    header{
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 56px;
+    }
+    header.dark picture.contenedorLogo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--font-24);
+    }
+    header.dark picture.contenedorLogo img.contenedorLogo_img{
+        width: 100%;
+    }
+    @media (width < 500px){
+        header{
+            justify-content: space-between;
+            padding: 12px 24px;
+        }
+    }
+</style>

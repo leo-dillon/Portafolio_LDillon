@@ -1,0 +1,106 @@
+---
+import Email from "./svg/networks/Email.astro";
+import GitHub from "./svg/networks/GitHub.astro";
+import Linkedin from "./svg/networks/Linkedin.astro";
+---
+
+<footer>
+<div class="footer-container">
+    <div class="footer-logo">
+        <h2>Leonardo Dillon</h2>
+        <p>Diseñador y Programador Web</p>
+        </div>
+        <ul class="footer-links">
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#contact">Contacto</a></li>
+        </ul>
+        <div class="footer-social">
+        <a href="https://github.com/tu_usuario" target="_blank" aria-label="GitHub">
+            <GitHub width="32" height="32" color="var(--text--color-white)"/>
+        </a>
+        <a href="https://linkedin.com/in/tu_usuario" target="_blank" aria-label="LinkedIn">
+            <Linkedin width="32" height="32" color="var(--text--color-white)"/>
+        </a>
+        <a href="mailto:tu_email@example.com" aria-label="Email">
+            <Email width="32" height="32" color="var(--text--color-white)"/>
+        </a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Leonardo Dillon.</p>
+    </div>
+</footer>
+
+<style>
+    footer {
+  background-color: #1e1e1e;
+  color: #f4f4f4;
+  padding: 2rem 0;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.footer-logo h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #f4f4f4;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+  color: #007bff;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  color: #f4f4f4;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.footer-social a:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+</style>
