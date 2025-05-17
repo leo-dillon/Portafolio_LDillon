@@ -27,16 +27,16 @@ import Menu from "./svg/Menu.astro"
                 LDILLON
             </Logo>
         </div>
-        <a href="">
+        <a href="/#">
             Inicio
         </a>
-        <a href="#aboutMe">
+        <a href="/#aboutMe">
             Sobre mí
         </a>
-        <a href="#proyects">
+        <a href="/#proyects">
             Proyectos
         </a>
-        <a href="#contact">
+        <a href="/contacto">
             Contacto
         </a>
     </nav>
@@ -50,9 +50,20 @@ import Menu from "./svg/Menu.astro"
         display: none;
     }
     div.contenedorNavBar.desktop nav{
-        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 24px;
     }
-    
+    div.contenedorNavBar.desktop nav a{
+        font-size: var(--font-20);
+        color: var(--text--color-white);
+        transition: color .3s ease-out;
+    }
+    div.contenedorNavBar.desktop nav a:hover{
+        color: var(--text--yellow);
+    }
+
     div.contenedorNavBar nav{
         display: none;
     }
@@ -74,6 +85,13 @@ import Menu from "./svg/Menu.astro"
     div.contenedorNavBar.desktop button.btnMenu{
         display: none;
     }
+
+    @media ( width < 700px ){
+        div.contenedorNavBar.desktop nav a{
+            font-size: var(--font-16);
+        }
+    }
+    
     @media ( width < 500px ){
         /* NAVBAR movile */
         div.contenedorNavBar{

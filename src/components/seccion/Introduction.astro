@@ -1,38 +1,55 @@
+---
+import Link from "../svg/Link.astro";
+import Image from "astro/components/Image.astro";
+import leoImagen from "../../../public/pictures/a4.png"
+---
+
 <section class="introduction">
     <div>
-        <h3>
-            Hola!!, Soy 
-        </h3>
-        <h1>
-            Leonardo Dillon
-        </h1>
-        <p>
-            Desarrollador Full-Stack <span> 💻 </span>
-        </p>
-        <a href="#aboutMe">
-            Sobre Mí
-        </a>
-        <a href="">
-            Contactame
-        </a>
+        <div>
+            <h3>
+                Hola!!, Soy 
+            </h3>
+            <h1>
+                Leonardo <br> Dillon
+            </h1>
+            <p>
+                Desarrollador FullStack 💻 
+            </p>
+            <div class="links">
+                <a href="#aboutMe" title="ir a Sobre mí">
+                    Sobre Mí
+                </a>
+                <a href="" title="ir a Contatame">
+                    Contáctame 
+                    <Link 
+                        width="24"
+                        height="24"
+                        color="var(--text--color-white)"
+                    />
+                </a>
+            </div>
+        </div>
+        <picture class="imgContainer">
+            <!-- <img src="../../../public/pictures/a4.png" alt="Imagen de Leonardo Dillon de perfil" title="Leonardo Dillon"> -->
+            <Image src={leoImagen} alt="Imagen de Leonardo Dillon de perfil" title="Leonardo Dillon"/>
+            <div class="deco_1"></div>
+            <div class="deco_2"></div>
+        </picture>
     </div>
-    <picture>
-        <img src="../../../public/pictures/a4.png" alt="">
-        <div class="deco_1"></div>
-        <div class="deco_2"></div>
-    </picture>
 </section>
 
 <style>
+    
     section.introduction{
         position: relative;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 0;
         padding: 56px 0;
         overflow: hidden;
+        color: var(--text--color-white);
     }
     section::before {
         content: '';
@@ -46,52 +63,78 @@
         animation: starsMove 10s linear infinite; 
         z-index: -1; 
     }
-    section.introduction div{
+    section.introduction>div{
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 64px;
+    }
+    section.introduction>div>div{
         display: flex;
         flex-direction: column;
         width: 80%;
+        max-width: max-content;
+        gap: 12px;
     }
-    section.introduction div h3{
+    section.introduction div div h3{
         color: var(--text--color-yellow);
-        font-size: var(--font-20);
+        font-size: var(--font-32);
         opacity: .8;
         font-weight: 400;
     }
-    section.introduction div h1{
+    section.introduction div div h1{
         width: min-content;
-        font-size: var(--font-64);
+        font-size: var(--font-120);
     } 
-    section.introduction div h1 span{
+    section.introduction div div h1 span{
         margin-left: 24px;
     }
-    section.introduction div p{
+    section.introduction div div p{
         margin: 12px 0;
-        font-size: var(--font-20);
+        font-size: var(--font-32);
         opacity: .8;
+        text-wrap:pretty;
     }
-    section.introduction div p span{
+    section.introduction div div p span{
         margin-left: 12px;
         font-size: var(--font-28);
     }
-    section.introduction div a{
+    section.introduction div div.links{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 42px;
+    }
+    section.introduction div div a{
+        display: flex;
+        align-items: center;
+        gap: 12px;
         width: max-content;
         margin: 4px 0 ;
         padding: 6px 24px;
-        border-radius: 24px;
+        border-radius: 8px;
         border: 2px solid var(--border--yellow);
         background-color: var(--background--color-blue);
         color: var(--text--color-white);
-        font-size: var(--font-18);
+        font-size: var(--font-24);
         letter-spacing: 2px;
         font-weight: 400;
+        opacity: 0.7;
+        transition: opacity .1s ease-out;
     }
-    section.introduction div a:active{
+    section.introduction div div a:hover{
+        opacity: 1;
+    }
+    section.introduction div div a:active{
         background-color: var( --hover--color--primary);
     }
-    section picture{
+    section picture.imgContainer{
         position: relative;
-        width: 60%;
-        margin: 42px auto 0;
+        width: max-content;
+        max-width: 400px;
         padding: 1px;
         display: flex;
         align-items: center;
@@ -99,12 +142,15 @@
         overflow: hidden;
         z-index: 3;
     }
-    section picture img{
+    section picture.imgContainer img{
         width: 100%;
+        max-height: 490px;
         border-radius: 24px;
         z-index: 2;
+        object-position: 100px right;
+        object-fit: cover;
     }
-    section picture div.deco_1{
+    section picture.imgContainer div.deco_1{
         width: 90px;
         height: 90px;
         position: absolute;
@@ -114,7 +160,7 @@
         z-index: 0;
         transition: top .3s ease-out;
     }
-    section picture div.deco_2{
+    section picture.imgContainer div.deco_2{
         width: 90px;
         height: 90px;
         position: absolute;
@@ -124,12 +170,61 @@
         z-index: 0;
         transition: bottom .3s ease-out;
     }
-    section picture:hover div.deco_1{
+    section picture.imgContainer:hover div.deco_1{
         top: calc(100% - 90px);
     }
-    section picture:hover div.deco_2{
+    section picture.imgContainer:hover div.deco_2{
         bottom: calc(100% - 90px);
     } 
+
+    @media(width < 1000px){
+        section.introduction div div h1{
+            font-size: var(--font-80);
+        }
+        section picture.imgContainer img{
+            max-height: 300px;
+            object-position: 200px right;
+        }
+        section.introduction div div.links{
+            gap: 8px;
+        }
+    }
+    @media(width < 750px){
+        section.introduction div {
+            gap: 12px;
+        }
+        section.introduction div div h1{
+            font-size: var(--font-64);
+        }
+        section.introduction div div.links{
+            flex-direction: column;
+        }
+    }
+    @media(width < 600px){
+        section.introduction{
+            width: 95%;
+            margin: 0 auto;
+        }
+        section.introduction>div{
+            flex-direction: column;
+        }
+        section.introduction>div>div{
+            align-items: center;
+        }
+        section.introduction div div h1{
+            text-align: center;
+        }
+        section.introduction>div>div{
+            width: 100%;
+        }
+        section.introduction div div.links{
+            justify-content: center;
+            flex-direction: row;
+        }
+        section.introduction div div p{
+            font-size: var(--font-22);
+        }
+    }
     @keyframes starsMove {
         0% {
             transform: translate(0, 0);

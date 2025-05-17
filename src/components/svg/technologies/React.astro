@@ -1,5 +1,5 @@
 ---
-const { width, height, color } = Astro.props
+const { width, height} = Astro.props
 ---
 <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -7,7 +7,7 @@ const { width, height, color } = Astro.props
     height= { height }
     viewBox="0 0 24 24"
     fill="none"
-    stroke={ color }
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
@@ -27,11 +27,3 @@ const { width, height, color } = Astro.props
     ></path><path d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
     ></path></svg
 >
-<style>
-    svg{
-        transition: stroke .3s ease-out;
-    }
-    svg:hover{
-        stroke: var(--text--color-white);
-    }
-</style>

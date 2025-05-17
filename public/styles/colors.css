@@ -8,6 +8,7 @@
 
     /* text color */
     --text--color-yellow: #FEC544;
+    --text--color-yellow: rgb(254, 197, 68);
     --text--color-white: #E3E4E7;
     --text--color-black: #070d1b;
 
@@ -27,6 +28,7 @@
     --hover--color-white: rgba(227, 228, 231, 40%);
 
     /* font-size */
+    --font-120: 120px;
     --font-80: 80px;
     --font-72: 72px;
     --font-64: 64px;

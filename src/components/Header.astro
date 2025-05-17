@@ -4,36 +4,51 @@
 ---
 
 <header class="dark">
-    <Logo className="logo" href="./">
-        <picture class="contenedorLogo" slot="before">
-            <img class="contenedorLogo_img" src="./public/icons/whiteLogo.png" alt="Logo de Leonardo Dillon">
-        </picture>
-        LDILLON
-    </Logo>
-    <NavigationMenu />
+    <div>
+        <Logo className="logo" href="./">
+            <picture class="contenedorLogo" slot="before">
+                <img class="contenedorLogo_img" src="./public/icons/whiteLogo.png" alt="Logo de Leonardo Dillon">
+            </picture>
+            LDILLON
+        </Logo>
+        <NavigationMenu />
+    </div>
 </header>
 
 <style>
     header{
-        padding: 12px;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
+        padding: 12px;
         height: 56px;
     }
-    header.dark picture.contenedorLogo{
+    header div{
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;  
+    }
+    header.dark div picture.contenedorLogo{
         display: flex;
         justify-content: center;
         align-items: center;
         width: var(--font-24);
     }
-    header.dark picture.contenedorLogo img.contenedorLogo_img{
+    header.dark div picture.contenedorLogo img.contenedorLogo_img{
         width: 100%;
     }
-    @media (width < 500px){
+    @media (width < 550px){
         header{
+            width: calc(100% - 12px);
             justify-content: space-between;
-            padding: 12px 24px;
+            padding: 12px 6px;
+        }
+        header div{
+            width: calc(100% - 8px) ;
+            margin: 0 4px;
         }
     }
 </style>

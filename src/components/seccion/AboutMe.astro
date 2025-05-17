@@ -3,48 +3,54 @@
     <h3>
         <span>S</span>OBRE <span>M</span>Í
     </h3>
-    <p class="description">
-        <span>M</span>i nombre es <span>Leonardo Dillon</span> y nací en Buenos Aires,
-        <span>Argentina</span>.<br /><br />
-        Comencé mis estudios en el año 2022, especializándome en programación web
-        en <a href="https://www.digitalhouse.com/ar" title="Ir a digitalhouse.com.ar">Digital House</a>, donde me gradué como <span>desarrollador Front-End</span> 
-        ese mismo año. Continué aprendiendo de manera autodidacta hasta que, en
-        agosto de 2023, comencé la carrera de 
-        <span>Diseño y Desarrollo Web</span> en el <a href="https://davinci.edu.ar/index.php" title="Ir a davinci.edu.ar">Instituto Da Vinci</a>.<br /><br />
-        En la actualidad me encuentro cursando <a href="" title="Github del Proyecto Final">El Proyecto Final</a> con el cual me recibiría como
-        <span>Desarrollador y Diseñador Web. </span> <br> <br>
-    </p>
-    <h4>Datos Extra</h4>
-    <div>
-        <p class="title">Fecha de Nacimiento :</p>
-        <p><strong> 16 <span>/</span> 03 <span>/</span> 1999</strong></p>
+    <div class="aboutMeContainer">
+        <p class="description">
+            <span>M</span>i nombre es <span>Leonardo Dillon</span> y nací en Buenos Aires,
+            <span>Argentina</span>.<br /><br />
+            Comencé mis estudios en el año 2022, especializándome en programación web
+            en <a href="https://www.digitalhouse.com/ar" title="Ir a digitalhouse.com.ar">Digital House</a>, donde me gradué como <span>desarrollador Front-End</span> 
+            ese mismo año. Continué aprendiendo de manera autodidacta hasta que, en
+            agosto de 2023, comencé la carrera de 
+            <span>Diseño y Desarrollo Web</span> en el <a href="https://davinci.edu.ar/index.php" title="Ir a davinci.edu.ar">Instituto Da Vinci</a>.<br /><br />
+            En la actualidad me encuentro cursando <a href="" title="Github del Proyecto Final">El Proyecto Final</a> con el cual me recibiría como
+            <span>Desarrollador y Diseñador Web. </span> <br> <br>
+        </p>
+        <div class="exData"> 
+            <h4>Datos Extra</h4>
+            <div>
+                <p class="title">Fecha de Nacimiento :</p>
+                <p><strong> 16 <span>/</span> 03 <span>/</span> 1999</strong></p>
+            </div>
+            <div>
+                <p class="title">Email :</p>
+                <p><strong>jeannotegui@gmail.com</strong></p>
+            </div>
+            <div>
+                <p class="title">Ubicación :</p>
+                <p><strong title="Ciudad Autonoma de Buenos Aires">CABA</strong>, Argentina</p>
+            </div>
+            <div class="borderTop">
+                <p class="title">Idiomas :</p>
+                <p><strong >Español Nativo / Ingles A2</strong></p>
+            </div>  
+            <!-- download="Leonardo_Dillon_CV" href="./CV/Leonardo Dillon.pdf" -->
+            <a class="btn"  title="Aun no esta hecho" href="">
+                Descargar CV
+            </a>
+        </div>
     </div>
-    <div>
-        <p class="title">Email :</p>
-        <p><strong>jeannotegui@gmail.com</strong></p>
-    </div>
-    <div>
-        <p class="title">Ubicación :</p>
-        <p><strong title="Ciudad Autonoma de Buenos Aires">CABA</strong>, Argentina</p>
-    </div>
-    <div class="borderTop">
-        <p class="title">Idiomas :</p>
-        <p><strong >Español Nativo / Ingles A2</strong></p>
-    </div>  
-    <!-- download="Leonardo_Dillon_CV" href="./CV/Leonardo Dillon.pdf" -->
-    <a class="btn"  title="Aun no esta hecho" href="">
-        Descargar CV
-    </a>
 </section>
 <style>
     section.aboutMe {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 80%;
+        width: 90%;
+        max-width: 1200px;
         margin: 0 auto;
-        padding-top: 32px;
+        padding: 52px 0;
         position: relative;
+        color: var(--text--color-white);
     }
     section.aboutMe h2 {
         width: 100%;
@@ -62,62 +68,103 @@
     section.aboutMe h3 {
         position: relative;
         text-align: center;
-        font-size: var(--font-32);
+        font-size: var(--font-48);
         border-bottom: 1px solid var(--text--color-white);
         margin: 32px 0;
     }
     section.aboutMe h3 span {
-        font-size: var(--font-32);
+        font-size: var(--font-48);
         color: var(--text--color-yellow);
     }
-    section.aboutMe p.description {
+    section.aboutMe div.aboutMeContainer{
+        width: 100%;
+        padding: 24px 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 42px;
+    }
+    section.aboutMe div.aboutMeContainer p.description {
         width: 90%;
-        margin: 0 auto;
+        max-width: 600px;
         opacity: 0.9;
+        font-size: var(--font-22);
     }
-    section.aboutMe p.description a{
-        color: var(--text--color-yellow);
+    section.aboutMe div.aboutMeContainer p.description a{
         font-style: italic;
         text-decoration: underline;
         padding: 0 2px;
+        font-size: var(--font-22);  
+        color: var(--text--color-white);
     }
-    section.aboutMe p.description span ,
-    section.aboutMe p span{
+    section.aboutMe div.aboutMeContainer p.description span ,
+    section.aboutMe div.aboutMeContainer p span{
         color: var(--text--color-yellow);
+        font-size: var(--font-22);
     }
-    section.aboutMe h4{
-        margin: 12px auto;
-        width: 90%;
-        font-size: var(--font-20);
+    section.aboutMe div.aboutMeContainer div.exData{
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    section.aboutMe div.aboutMeContainer div.exData h4{
+        margin: 0 auto 12px;
+        width: 100%;
+        font-size: var(--font-24);
         font-weight: 300;
         border-bottom: 1px solid var(--background--color-yellow);
     }
-    section.aboutMe div{
-        width: 90%;
+    section.aboutMe div.aboutMeContainer div.exData div{
+        width: 100%;
         margin: 6px auto;
         display: flex;
         justify-content: space-between;
         flex-wrap: nowrap;
     }
-    section.aboutMe div p.title{
+    section.aboutMe div.aboutMeContainer div.exData div p.title{
         opacity: .8;
+        font-size: var(--font-22);
     }
-    section.aboutMe div.borderTop{
+    section.aboutMe div.aboutMeContainer div.exData div.borderTop{
         padding-bottom: 12px;
         border-bottom: 1px solid var(--background--color-yellow);
     }
-    section.aboutMe a.btn{
+    section.aboutMe div.aboutMeContainer div.exData a.btn{
         display: inline-block;
-        width: 90%;
+        width: 100%;
         padding: 8px 0px;
         margin: 12px auto;
-        border-radius: 24px;
+        border-radius: 8px;
         border: 1px solid var(--border--yellow);
-        background-color: var(--background--color-blue);
+        background-color: var(--background--color-yellow);
         text-align: center;
-        color: var(--text--color-white);
-        font-size: var(--font-18);
+        color: var(--text--color-black);
+        font-size: var(--font-24);
         letter-spacing: 2px;
-        font-weight: 400;
+        font-weight: bold;
+        opacity: .7;
+        transition: opacity .1s ease-out;
+    }
+    section.aboutMe div.aboutMeContainer div.exData a.btn:hover{
+        opacity: 1;
+    }
+    @media(width < 1000px){
+        section.aboutMe div.aboutMeContainer{
+            flex-direction: column;
+            align-items: center;
+        }
+        section.aboutMe div.aboutMeContainer p.description{
+            width: 90%;
+        }
+        section.aboutMe div.aboutMeContainer div.exData{
+            width: 90%;
+            max-width: 600px;
+        }
+    }
+    @media(width < 750px){
+        section.aboutMe{
+            width: 100%;
+        }
     }
 </style>

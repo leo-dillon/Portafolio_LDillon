@@ -14,7 +14,7 @@ import Web from "../svg/networks/Web.astro";
     <h3>
         <span>P</span>ROYECTOS
     </h3>
-    <div>
+    <div class="proyectContainer">
         <article>
             <picture>
                 <img
@@ -25,43 +25,48 @@ import Web from "../svg/networks/Web.astro";
             <div class="info">
                 <h4>Fragance</h4>
                 <p class="description">
-                    Desarrollé un e-commerce especializado en perfumería con un
-                    enfoque en la experiencia de usuario intuitiva. <br> <br>
+                    Desarrollé la web de una perfumería.<br> 
                     <span>Los usuarios</span> pueden explorar productos, registrarse y gestionar su
-                    información personal y su carrito de compras. <br> <br>
+                    información personal y su carrito de compras. <br> 
                     <span>Los administradores</span> pueden gestionar productos, marcas, géneros y usuarios.
                 </p>
                 <div class="proyects_technology">
-                    <Html
+                    <div class="html">
+                        <Html
                         width="32"
                         height="32"
-                        color="var(--hover--color-white)"
-                    />
-                    <Css 
+                        />
+                    </div>
+                    <div class="css">
+                        <Css 
                         width="32" 
                         height="32" 
-                        color="var(--hover--color-white)" 
-                    />
-                    <JavaScript
+                        />
+                    </div>
+                    <div class="js">
+                        <JavaScript
                         width="32"
                         height="32"
-                        color="var(--hover--color-white)"
-                    />
-                    <Php 
+                        />
+                    </div>
+                    <div class="php">
+                        <Php 
                         width="32" 
                         height="32" 
-                        color="var(--hover--color-white)" 
-                    />
-                    <MySQL
+                        />
+                    </div>
+                    <div class="mysql">
+                        <MySQL
                         width="32"
                         height="32"
-                        color="var(--hover--color-white)"
-                    />
-                    <Git
+                        />
+                    </div>
+                    <div class="git">
+                        <Git
                         width="32"
                         height="32"
-                        color="var(--hover--color-white)"
-                    />
+                        />
+                    </div>
                 </div>
                 <div class="proyects_networks">
                     <a class="linkNetwork" href="https://github.com/leo-dillon/PII-DILLON-FINAL" title="Ver repositorío Git Hub">
@@ -93,9 +98,11 @@ import Web from "../svg/networks/Web.astro";
         flex-direction: column;
         align-items: center;
         width: 90%;
+        max-width: 1200px;
         margin: 0 auto;
-        padding-top: 32px;
+        padding: 52px 0;
         position: relative;
+        color: var(--text--color-white);
     }
     section.proyects h2 {
         width: 100%;
@@ -111,19 +118,28 @@ import Web from "../svg/networks/Web.astro";
         width: 100%;
     }
     section.proyects h3 {
+        width: 100%;
         position: relative;
+        margin: 32px 0;
+        border-bottom: 1px solid var(--text--color-white);
         text-align: center;
         font-size: var(--font-32);
-        border-bottom: 1px solid var(--text--color-white);
-        margin: 32px 0;
     }
     section.proyects h3 span {
         font-size: var(--font-32);
         color: var(--text--color-yellow);
     }
-    section.proyects div article {
+    section.proyects div.proyectContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 42px 24px;
+    }
+    section.proyects div.proyectContainer article {
         width: calc(100% - 24px);
-        margin: 0 auto;
+        max-width: 350px;
         padding: 12px;
         border-radius: 24px;
         background-color: var(--background--color-light-blue2);
@@ -134,41 +150,41 @@ import Web from "../svg/networks/Web.astro";
         gap: 12px;
         overflow: hidden;
     }
-    section.proyects div article picture {
+    section.proyects div.proyectContainer article picture {
         width: 100%;
         margin: 0 auto;
     }
-    section.proyects div article picture img {
+    section.proyects div.proyectContainer article picture img {
         width: 100%;
         border-radius: 28px;
         transform-origin: bottom;
         transition: scale 0.2s ease-out;
     }
-    section.proyects div article:hover picture img {
+    section.proyects div.proyectContainer article:hover picture img {
         scale: 1.2;
     }
-    section.proyects div article div.info{
+    section.proyects div.proyectContainer article div.info{
         position: relative;
         display: flex;
         flex-direction: column;
         gap: 24px;
     }
-    section.proyects div article div.info h4 {
+    section.proyects div.proyectContainer article div.info h4 {
         text-align: start;
         font-size: var(--font-32);
         letter-spacing: 4px;
     }
-    section.proyects div article div.info p.description {
+    section.proyects div.proyectContainer article div.info p.description {
         margin-left: auto;
         opacity: 0.8;
     }
-    section.proyects div article div.info p.description span {
+    section.proyects div.proyectContainer article div.info p.description span {
         color: var(--text--color-yellow);
     }
-    section.proyects div article div.info div{
+    section.proyects div.proyectContainer article div.info div{
         margin: 4px 0;
     }
-    section.proyects div article div.info div.proyects_technology{
+    section.proyects div.proyectContainer article div.info div.proyects_technology{
         padding: 8px 0;
         border-top: 2px solid var(--hover--color-white);
         border-bottom: 2px solid var(--hover--color-white);
@@ -177,7 +193,7 @@ import Web from "../svg/networks/Web.astro";
         flex-wrap: wrap;
         gap: 12px;
     }
-    section.proyects div article div.info div.proyects_networks{
+    section.proyects div.proyectContainer article div.info div.proyects_networks{
         position: absolute;
         top: 0px;
         right: 12px;
@@ -185,7 +201,7 @@ import Web from "../svg/networks/Web.astro";
         align-items: center;
         gap: 24px;
     }
-    section.proyects div article div.info a.btn_VerMas{
+    section.proyects div.proyectContainer article div.info a.btn_VerMas{
         padding: 12px;
         border-radius: 12px;
         color: var(--text--color-white);
@@ -193,4 +209,20 @@ import Web from "../svg/networks/Web.astro";
         text-align: center;
         display: none;
     }
+    div.html:hover        { color: #E44D26; }     
+    div.css:hover         { color: #264DE4; }      
+    div.js:hover          { color: #F0DB4F; }       
+    div.php:hover         { color: #777BB4; }      
+    div.git:hover         { color: #F1502F; }      
+    div.sass:hover        { color: #CF649A; }     
+    div.boostrap:hover    { color: #7952B3; } 
+    div.tailwind:hover    { color: #38BDF8; } 
+    div.astro:hover       { color: #FF5D01; }    
+    div.react:hover       { color: #61DBFB; }    
+    div.vue:hover         { color: #42b883; }      
+    div.laravel:hover     { color: #FF2D20; }  
+    div.mysql:hover       { color: #00758F; }    
+    div.mongodb:hover     { color: #4DB33D; }  
+    div.wordpress:hover   { color: #21759B; }
+    div.kotlin:hover      { color: #A97BFF; }
 </style>
