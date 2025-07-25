@@ -92,35 +92,34 @@ import Menu from "./svg/Menu.astro"
         }
     }
     
-    @media ( width < 500px ){
+    @media ( width < 550px ){
         /* NAVBAR movile */
         div.contenedorNavBar{
             background-color: var(--light--blue);
             z-index: 10;
         }
         div.contenedorNavBar nav{
-            width: 90%;
-            max-width: 360px;
-            padding: 42px 12px 90px;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            padding: 32px 0px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
             gap: 42px;
             background-color: var(--light--blue);
-            border-bottom-left-radius: 24px;
-            position: fixed;
             top: 0;
-            right: -1000px;
+            left: 0;
             transform: translateX(1000px);
             opacity: 0;
-            transition: transform .5s ease-out, opacity .3s ease-out;
+            transition: transform .5s ease-in, opacity .3s ease-in;
         }
         div.contenedorNavBar nav.open{
             right: 0;
             transform: translateX(0);
             opacity: 1;
             box-shadow: 2px -2px 12px var(--grey);
+            transition: transform .5s ease-out, opacity .3s ease-out;
         }
         div.contenedorNavBar nav .expandedLogo{
             display: flex;
@@ -163,7 +162,7 @@ import Menu from "./svg/Menu.astro"
     let ancords = document.querySelectorAll('nav a')
     window.addEventListener('load', () => {
         let viewWidth = window.innerWidth
-        if(viewWidth < 500){
+        if(viewWidth < 550){
             contentcontenedorNavBar?.classList.remove("desktop")
         }else{
             contentcontenedorNavBar?.classList.add("desktop")
@@ -171,7 +170,7 @@ import Menu from "./svg/Menu.astro"
     })
     window.addEventListener('resize', () => {
         let viewWidth = window.innerWidth
-        if(viewWidth < 500){
+        if(viewWidth < 550){
             contentcontenedorNavBar?.classList.remove("desktop")
         }else{
             contentcontenedorNavBar?.classList.add("desktop")

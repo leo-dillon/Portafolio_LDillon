@@ -1,12 +1,42 @@
 ---
-import Php from "../svg/technologies/Php.astro";
-import Html from "../svg/technologies/Html.astro";
-import Css from "../svg/technologies/Css.astro";
-import MySQL from "../svg/technologies/MySQL.astro";
-import JavaScript from "../svg/technologies/JavaScript.astro";
-import GitHub from "../svg/networks/GitHub.astro";
-import Git from "../svg/technologies/Git.astro";
-import Web from "../svg/networks/Web.astro";
+import Web          from "../svg/networks/Web.astro";
+import Php          from "../svg/technologies/Php.astro";
+import Css          from "../svg/technologies/Css.astro";
+import Git          from "../svg/technologies/Git.astro";
+import Vue          from "../svg/technologies/Vue.astro";
+import Html         from "../svg/technologies/Html.astro";
+import MySQL        from "../svg/technologies/MySQL.astro";
+import React        from "../svg/technologies/React.astro";
+import GitHub       from "../svg/networks/GitHub.astro";
+import Kotlin       from "../svg/technologies/Kotlin.astro";
+import MongoDB      from "../svg/technologies/MongoDB.astro";
+import Laravel      from "../svg/technologies/Laravel.astro";
+import Tailwind     from "../svg/technologies/Tailwind.astro";
+import Boostrap     from "../svg/technologies/Boostrap.astro";
+import WordPress    from "../svg/technologies/WordPress.astro";
+import proyectos    from "../../data/proyectos.json"
+import JavaScript   from "../svg/technologies/JavaScript.astro";
+
+const techComponents: { [key: string]: any } = {
+  html:         Html,
+  css:          Css,
+  sass:         Css,
+  javascript:   JavaScript,
+  php:          Php,
+  git:          Git,
+  boostrap:     Boostrap,
+  tailwind:     Tailwind,
+  astro:        Web,
+  react:        React,
+  vue:          Vue,
+  laravel:      Laravel,
+  mysql:        MySQL,
+  mongodb:      MongoDB,
+  wordpress:    WordPress,
+  kotlin:       Kotlin
+}
+
+
 ---
 
 <section class="proyects" id="proyects">
@@ -15,80 +45,51 @@ import Web from "../svg/networks/Web.astro";
         <span>P</span>ROYECTOS
     </h3>
     <div class="proyectContainer">
-        <article>
-            <picture>
-                <img
-                    src="../../../public/pictures/fragance.png"
-                    alt="Foto del proyecto"
-                />
-            </picture>
-            <div class="info">
-                <h4>Fragance</h4>
-                <p class="description">
-                    Desarrollé la web de una perfumería.<br> 
-                    <span>Los usuarios</span> pueden explorar productos, registrarse y gestionar su
-                    información personal y su carrito de compras. <br> 
-                    <span>Los administradores</span> pueden gestionar productos, marcas, géneros y usuarios.
-                </p>
-                <div class="proyects_technology">
-                    <div class="html">
-                        <Html
-                        width="32"
-                        height="32"
-                        />
+        {
+            proyectos.map( (proyect) => (
+                <article>
+                    <picture>
+                        <img 
+                            src={ proyect.img[0].url } 
+                            alt={ proyect.img[0].title }
+                        >
+                        <a href="">
+                            Proxima imagen
+                        </a>
+                    </picture>
+                    <div class="info">
+                        <h4>{ proyect.name }</h4>
+                        <p class="description" set:html={ proyect.description }> </p>
+                        <div class="proyects_technology">
+                            { 
+                                proyect.technology.map( ( tech ) => {
+                                    const Comp = techComponents[ tech.name.toLowerCase() ]
+                                    return <div class={ tech.name } title={ tech.name } >
+                                        <Comp width="32" height="32"/>
+                                    </div>
+                                } )
+                            }
+                        </div>
+                        <div class="proyects_networks">
+                            <a class="linkNetwork" href={ proyect.links[0].link } title={ proyect.links[0].title }>
+                                <GitHub 
+                                    width="32" 
+                                    height="32" 
+                                    color="var(--hover--color-white)"
+                                />
+                            </a>
+                            { proyect.links[1] && <a class="linkNetwork" href={ proyect?.links[1]?.link } title={ proyect?.links[1]?.title }>
+                                <Web 
+                                    width="32" 
+                                    height="32" 
+                                    color="var(--hover--color-white)"
+                                />
+                            </a> }
+                        </div>
                     </div>
-                    <div class="css">
-                        <Css 
-                        width="32" 
-                        height="32" 
-                        />
-                    </div>
-                    <div class="js">
-                        <JavaScript
-                        width="32"
-                        height="32"
-                        />
-                    </div>
-                    <div class="php">
-                        <Php 
-                        width="32" 
-                        height="32" 
-                        />
-                    </div>
-                    <div class="mysql">
-                        <MySQL
-                        width="32"
-                        height="32"
-                        />
-                    </div>
-                    <div class="git">
-                        <Git
-                        width="32"
-                        height="32"
-                        />
-                    </div>
-                </div>
-                <div class="proyects_networks">
-                    <a class="linkNetwork" href="https://github.com/leo-dillon/PII-DILLON-FINAL" title="Ver repositorío Git Hub">
-                    <GitHub 
-                        width="32" 
-                        height="32" 
-                        color="var(--hover--color-white)"
-                        />
-                    </a>
-                    <a class="linkNetwork" href="https://github.com/leo-dillon/PII-DILLON-FINAL" title="Ver repositorío Git Hub">
-                        <Web 
-                        width="32" 
-                        height="32" 
-                        color="var(--hover--color-white)"
-                        />
-                    </a>
-                </div>
-                <a class="btn_VerMas" href="" title="">
-                    Saber Más
-                </a>
-            </div>
-        </article>
+                </article>
+            ))
+        }
     </div>
 </section>
 
@@ -151,11 +152,19 @@ import Web from "../svg/networks/Web.astro";
         overflow: hidden;
     }
     section.proyects div.proyectContainer article picture {
+        position: relative;
         width: 100%;
         margin: 0 auto;
     }
+    section.proyects div.proyectContainer article picture a{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        cursor: pointer;
+    }
     section.proyects div.proyectContainer article picture img {
         width: 100%;
+        height: 170px;
         border-radius: 28px;
         transform-origin: bottom;
         transition: scale 0.2s ease-out;
@@ -178,9 +187,6 @@ import Web from "../svg/networks/Web.astro";
         margin-left: auto;
         opacity: 0.8;
     }
-    section.proyects div.proyectContainer article div.info p.description span {
-        color: var(--text--color-yellow);
-    }
     section.proyects div.proyectContainer article div.info div{
         margin: 4px 0;
     }
@@ -192,6 +198,10 @@ import Web from "../svg/networks/Web.astro";
         justify-content: space-evenly;
         flex-wrap: wrap;
         gap: 12px;
+    }
+    section.proyects div.proyectContainer article div.info div.proyects_technology div{
+        color: var(--text--color-white);
+        transition: color .2s .3s ease-out;
     }
     section.proyects div.proyectContainer article div.info div.proyects_networks{
         position: absolute;
@@ -209,20 +219,20 @@ import Web from "../svg/networks/Web.astro";
         text-align: center;
         display: none;
     }
-    div.html:hover        { color: #E44D26; }     
-    div.css:hover         { color: #264DE4; }      
-    div.js:hover          { color: #F0DB4F; }       
-    div.php:hover         { color: #777BB4; }      
-    div.git:hover         { color: #F1502F; }      
-    div.sass:hover        { color: #CF649A; }     
-    div.boostrap:hover    { color: #7952B3; } 
-    div.tailwind:hover    { color: #38BDF8; } 
-    div.astro:hover       { color: #FF5D01; }    
-    div.react:hover       { color: #61DBFB; }    
-    div.vue:hover         { color: #42b883; }      
-    div.laravel:hover     { color: #FF2D20; }  
-    div.mysql:hover       { color: #00758F; }    
-    div.mongodb:hover     { color: #4DB33D; }  
-    div.wordpress:hover   { color: #21759B; }
-    div.kotlin:hover      { color: #A97BFF; }
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.html:hover        { color: #E44D26; transition: color 0s ease-out;}     
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.css:hover         { color: #264DE4; transition: color 0s ease-out;}      
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.javascript:hover          { color: #F0DB4F; transition: color 0s ease-out;}       
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.php:hover         { color: #777BB4; transition: color 0s ease-out;}      
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.git:hover         { color: #F1502F; transition: color 0s ease-out;}      
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.sass:hover        { color: #CF649A; transition: color 0s ease-out;}     
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.boostrap:hover    { color: #7952B3; transition: color 0s ease-out;} 
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.tailwind:hover    { color: #38BDF8; transition: color 0s ease-out;} 
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.astro:hover       { color: #FF5D01; transition: color 0s ease-out;}    
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.react:hover       { color: #61DBFB; transition: color 0s ease-out;}    
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.vue:hover         { color: #42b883; transition: color 0s ease-out;}      
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.laravel:hover     { color: #FF2D20; transition: color 0s ease-out;}  
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.mysql:hover       { color: #00758F; transition: color 0s ease-out;}    
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.mongodb:hover     { color: #4DB33D; transition: color 0s ease-out;}  
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.wordpress:hover   { color: #21759B; transition: color 0s ease-out;}
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.kotlin:hover      { color: #A97BFF; transition: color 0s ease-out;}
 </style>

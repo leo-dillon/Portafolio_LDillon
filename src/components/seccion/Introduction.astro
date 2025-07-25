@@ -8,13 +8,13 @@ import leoImagen from "../../../public/pictures/a4.png"
     <div>
         <div>
             <h3>
-                Hola!!, Soy 
+                Hola! <span>Soy</span> 
             </h3>
             <h1>
                 Leonardo <br> Dillon
             </h1>
             <p>
-                Desarrollador FullStack 💻 
+                Desarrollador FullStack
             </p>
             <div class="links">
                 <a href="#aboutMe" title="ir a Sobre mí">
@@ -32,7 +32,7 @@ import leoImagen from "../../../public/pictures/a4.png"
         </div>
         <picture class="imgContainer">
             <!-- <img src="../../../public/pictures/a4.png" alt="Imagen de Leonardo Dillon de perfil" title="Leonardo Dillon"> -->
-            <Image src={leoImagen} alt="Imagen de Leonardo Dillon de perfil" title="Leonardo Dillon"/>
+            <Image src={leoImagen} alt="Imagen de Leonardo Dillon de perfil" title="Foto de Leonardo Dillon"/>
             <div class="deco_1"></div>
             <div class="deco_2"></div>
         </picture>
@@ -65,30 +65,33 @@ import leoImagen from "../../../public/pictures/a4.png"
     }
     section.introduction>div{
         width: 90%;
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 24px 0;
         display: flex;
+        flex-direction: row-reverse;
         justify-content: space-between;
         align-items: center;
-        gap: 64px;
+        gap: 32px;
     }
     section.introduction>div>div{
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 100%;
         max-width: max-content;
         gap: 12px;
     }
     section.introduction div div h3{
         color: var(--text--color-yellow);
         font-size: var(--font-32);
-        opacity: .8;
+        opacity: .5;
         font-weight: 400;
     }
     section.introduction div div h1{
         width: min-content;
-        font-size: var(--font-120);
+        font-size: var(--font-100);
+        color: var(--text--color-white);
+        font-weight: bold;
     } 
     section.introduction div div h1 span{
         margin-left: 24px;
@@ -102,6 +105,7 @@ import leoImagen from "../../../public/pictures/a4.png"
     section.introduction div div p span{
         margin-left: 12px;
         font-size: var(--font-28);
+        opacity: ;
     }
     section.introduction div div.links{
         display: flex;
@@ -133,14 +137,16 @@ import leoImagen from "../../../public/pictures/a4.png"
     }
     section picture.imgContainer{
         position: relative;
-        width: max-content;
+        width: 100%;
         max-width: 400px;
         padding: 1px;
         display: flex;
         align-items: center;
         border-radius: 24px;
         overflow: hidden;
+        opacity: 0.8;
         z-index: 3;
+        transition: opacity .3s ease-out;
     }
     section picture.imgContainer img{
         width: 100%;
@@ -170,6 +176,9 @@ import leoImagen from "../../../public/pictures/a4.png"
         z-index: 0;
         transition: bottom .3s ease-out;
     }
+    section picture.imgContainer:hover{
+        opacity: 1;
+    }
     section picture.imgContainer:hover div.deco_1{
         top: calc(100% - 90px);
     }
@@ -182,8 +191,7 @@ import leoImagen from "../../../public/pictures/a4.png"
             font-size: var(--font-80);
         }
         section picture.imgContainer img{
-            max-height: 300px;
-            object-position: 200px right;
+            max-height: 460px;
         }
         section.introduction div div.links{
             gap: 8px;
@@ -204,14 +212,24 @@ import leoImagen from "../../../public/pictures/a4.png"
         section.introduction{
             width: 95%;
             margin: 0 auto;
+            padding: 0;
         }
         section.introduction>div{
-            flex-direction: column;
+            flex-direction: column-reverse;
+            gap: 0;
         }
         section.introduction>div>div{
-            align-items: center;
+            margin: 6px 0;
+        }
+        section.introduction div div h3{
+            width: 100%;
+            margin-top: 12px;
+            text-align: center;
+            font-size: var(--font-20);
         }
         section.introduction div div h1{
+            width: 100%;
+            font-size: var(--font-48);
             text-align: center;
         }
         section.introduction>div>div{
@@ -221,8 +239,22 @@ import leoImagen from "../../../public/pictures/a4.png"
             justify-content: center;
             flex-direction: row;
         }
+        section.introduction div div.links a{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+        }
         section.introduction div div p{
+            width: 100%;
+            text-align: center;
             font-size: var(--font-22);
+        }
+        section.introduction div picture{
+            width: auto;
+        }
+        section.introduction div picture img{
+            width: auto;
+            height: 300px;
         }
     }
     @keyframes starsMove {

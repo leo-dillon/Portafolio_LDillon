@@ -1,0 +1,49 @@
+[
+    {
+        "id": 1,
+        "name": "Desafíos",
+        "description": "Como desarrollador me gusta realizar desafíos técnicos. Estos desafíos me permiten mejorar mis habilidades de lógica, pensamiento crítico y creatividad. La mayoría de los desafíos que resuelvo provienen de la plataforma LeetCode, un sitio muy completo que reúne problemas de distintas temáticas y niveles de dificultad.",
+        "links": [
+            {
+                "id": 1,
+                "link": "https://github.com/leo-dillon/Desafios/",
+                "title": "Ir al repositorio de Github"
+            }
+        ],
+        "img": [
+            {
+                "id": 1,
+                "url": "../../../public/pictures/desafios_home.png",
+                "title": "Home a proyecto Desafiós"
+            }
+            ,
+            {
+                "id": 2,
+                "url": "../../../public/pictures/desafios_ej.png",
+                "title": "Home a proyecto Desafiós"
+            }
+        ],
+        "technology": [
+            {
+                "id": 1,
+                "name": "html"
+            },
+            {
+                "id": 2,
+                "name": "tailwind"
+            },
+            {
+                "id": 3,
+                "name": "javascript"
+            },
+            {
+                "id":4,
+                "name": "vue"
+            },
+            {
+                "id":4,
+                "name": "git"
+            }
+        ]
+    }
+]

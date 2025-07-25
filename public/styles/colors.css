@@ -9,7 +9,7 @@
     /* text color */
     --text--color-yellow: #FEC544;
     --text--color-yellow: rgb(254, 197, 68);
-    --text--color-white: #E3E4E7;
+    --text--color-white: #d3d3d5;
     --text--color-black: #070d1b;
 
     /* bg */
@@ -17,7 +17,7 @@
     --background--color-light-blue2: #1d2538;
     --background--color-light-blue: #101624;
     --background--color-blue: #070E1B;
-    --background--color-white: #E3E4E7;
+    --background--color-white: #e7e7e7;
     --background--color-light-white: rgba(227, 228, 231, 50%);
 
     /* Border */
@@ -28,7 +28,7 @@
     --hover--color-white: rgba(227, 228, 231, 40%);
 
     /* font-size */
-    --font-120: 120px;
+    --font-100: 100px;
     --font-80: 80px;
     --font-72: 72px;
     --font-64: 64px;
@@ -45,4 +45,5 @@
     --font-20: 20px;
     --font-18: 18px;
     --font-16: 16px;    
+    --font-12: 12px;    
 }
