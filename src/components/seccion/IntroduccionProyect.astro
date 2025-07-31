@@ -1,0 +1,72 @@
+    ---
+import GitHub from "../svg/networks/GitHub.astro"
+
+        const { name, github } = Astro.props
+    ---
+
+    <div class="presentacion">
+        <h1> 
+            { name } 
+            <a href={ github } title="Ir a Github del proyecto">
+                <GitHub width="32" heigth="32" color="var(--text--color-white)"/>
+            </a>
+        </h1>
+        <div class="description_proyect">
+            <picture>
+                <img src="../public/pictures/leo_avatar.png" alt="Avatar de Leo Dillon">
+            </picture>
+            <div class="markdown-content">
+                <slot />
+            </div>
+        </div>
+    </div>
+
+    <style>
+        *{
+            color: var(--text--color-white);
+        }
+        div.presentacion{   
+        }
+        div.presentacion h1{
+            position: relative;
+            font-size: var(--font-64);
+            color: var(--text--color-yellow);
+            border-bottom: 1px solid var(--background--color-light-white);
+        }
+        section h1 a{
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            opacity: .6;
+        }
+        section h1 a:hover{
+            opacity: 1;
+        }
+        :global(div.markdown-content){
+            border-left: 1px solid var(--text--color-yellow);
+            padding-left: 12px;
+        }
+        :global(div.markdown-content p){
+            width: 90%;
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+        :global(div.markdown-content p strong),
+        :global(div.markdown-content p em){
+            color: var(--text--color-light-yellow);
+        }
+        div.description_proyect{
+            display: flex;
+        }
+        div.description_proyect picture{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background-color: var(--background--color-Big-light-white);
+        }
+        div.description_proyect picture img{
+            height: 64px;
+            border-bottom-left-radius: 240px;
+            border-bottom-right-radius: 240px;
+        }
+    </style>

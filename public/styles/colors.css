@@ -8,17 +8,20 @@
 
     /* text color */
     --text--color-yellow: #FEC544;
-    --text--color-yellow: rgb(254, 197, 68);
+    --text--color-light-yellow: rgb(254, 197, 68, 80%);
     --text--color-white: #d3d3d5;
+    --text--color-cyan: #b0b0ff;
     --text--color-black: #070d1b;
 
     /* bg */
     --background--color-yellow: var(--text--color-yellow);
     --background--color-light-blue2: #1d2538;
+    --background--color-light-blue-70: rgba(29, 37, 56, 70%);
     --background--color-light-blue: #101624;
     --background--color-blue: #070E1B;
     --background--color-white: #e7e7e7;
     --background--color-light-white: rgba(227, 228, 231, 50%);
+    --background--color-Big-light-white: rgba(227, 228, 231, 10%);
 
     /* Border */
     --border--yellow: #6f4d00;

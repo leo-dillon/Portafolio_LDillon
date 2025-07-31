@@ -16,6 +16,7 @@ import Boostrap     from "../svg/technologies/Boostrap.astro";
 import WordPress    from "../svg/technologies/WordPress.astro";
 import proyectos    from "../../data/proyectos.json"
 import JavaScript   from "../svg/technologies/JavaScript.astro";
+import MaxMinSize   from "../svg/MaxMinSize.astro";
 
 const techComponents: { [key: string]: any } = {
   html:         Html,
@@ -35,9 +36,32 @@ const techComponents: { [key: string]: any } = {
   wordpress:    WordPress,
   kotlin:       Kotlin
 }
-
-
 ---
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let a = document.querySelectorAll('a#VerImagen');
+        a.forEach( b => {
+            b.addEventListener('click', () => {
+                let modal = document.querySelector("div.modal")
+                let imagen = modal?.querySelector(".imagenes")
+				modal?.addEventListener('click', () => {
+					imagen.innerHTML = ''
+					modal.classList.remove('activado')
+					return
+				})
+                imagen.innerHTML = `
+                        <picture>
+                            <img src="${b.dataset.proyect}" alt="Home page del proyecto" title="Home page del proyecto">
+                            <small> Home page del proyecto </small>
+                            <button> Cerrar </button>
+                        </picture>
+                `
+                modal?.classList.toggle('activado')
+            })
+        })
+    });
+</script>	
 
 <section class="proyects" id="proyects">
     <h2>PROYECTOS</h2>
@@ -46,15 +70,19 @@ const techComponents: { [key: string]: any } = {
     </h3>
     <div class="proyectContainer">
         {
-            proyectos.map( (proyect) => (
-                <article>
+            proyectos.map( ( proyect ) => (
+                <article id={proyect.name}>
                     <picture>
                         <img 
                             src={ proyect.img[0].url } 
                             alt={ proyect.img[0].title }
                         >
-                        <a href="">
-                            Proxima imagen
+                        <a id="VerImagen" title="Ver Imagen" data-proyect={ proyect.img[0].url }>
+                            <MaxMinSize 
+                                width="32" 
+                                heigth="32" 
+                                color="var(--hover--color-white)"
+                            />
                         </a>
                     </picture>
                     <div class="info">
@@ -70,6 +98,7 @@ const techComponents: { [key: string]: any } = {
                                 } )
                             }
                         </div>
+                        <a href={ "proyectos/" + proyect.ruta }> Ver Más </a>
                         <div class="proyects_networks">
                             <a class="linkNetwork" href={ proyect.links[0].link } title={ proyect.links[0].title }>
                                 <GitHub 
@@ -158,13 +187,18 @@ const techComponents: { [key: string]: any } = {
     }
     section.proyects div.proyectContainer article picture a{
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 8px;
+        right: 8px;
         cursor: pointer;
+        transform-origin: bottom right;
+        transition: scale .1s ease-out;
+    }
+    section.proyects div.proyectContainer article picture a:hover{
+        scale: 1.3;
     }
     section.proyects div.proyectContainer article picture img {
         width: 100%;
-        height: 170px;
+        max-height: 170px;
         border-radius: 28px;
         transform-origin: bottom;
         transition: scale 0.2s ease-out;
@@ -176,7 +210,15 @@ const techComponents: { [key: string]: any } = {
         position: relative;
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 12px;
+    }
+    section.proyects div.proyectContainer article div.info a{
+        text-align: end;
+        color: var(--text--color-cyan);
+        font-size: var(--font-16);
+    }
+    section.proyects div.proyectContainer article div.info a:hover{
+        color: var(--text--color-white);
     }
     section.proyects div.proyectContainer article div.info h4 {
         text-align: start;

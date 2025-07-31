@@ -2,7 +2,9 @@
     {
         "id": 1,
         "name": "Desafíos",
+        "ruta": "desafios",
         "description": "Como desarrollador me gusta realizar desafíos técnicos. Estos desafíos me permiten mejorar mis habilidades de lógica, pensamiento crítico y creatividad. La mayoría de los desafíos que resuelvo provienen de la plataforma LeetCode, un sitio muy completo que reúne problemas de distintas temáticas y niveles de dificultad.",
+        "modal": "#modalDesafios",
         "links": [
             {
                 "id": 1,
@@ -14,13 +16,15 @@
             {
                 "id": 1,
                 "url": "../../../public/pictures/desafios_home.png",
-                "title": "Home a proyecto Desafiós"
+                "title": "Home a proyecto Desafiós",
+                "text": "Home del proyecto Desafiós"
             }
             ,
             {
                 "id": 2,
                 "url": "../../../public/pictures/desafios_ej.png",
-                "title": "Home a proyecto Desafiós"
+                "title": "Ejemplo de desafió resuelto",
+                "text": "Ejemplo de desafió resuelto"
             }
         ],
         "technology": [

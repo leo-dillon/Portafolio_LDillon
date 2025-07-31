@@ -1,0 +1,205 @@
+---
+    import Layout                   from "../../layouts/Layout.astro";
+    import IntroductionProyect      from "../../components/seccion/IntroduccionProyect.astro";
+    import DescripcionProyecto      from "../../components/seccion/DescripcionProyecto.astro";
+    
+    import { getCollection, render } from "astro:content";
+
+    import Web          from "../../components/svg/networks/Web.astro";
+    import Php          from "../../components/svg/technologies/Php.astro";
+    import Css          from "../../components/svg/technologies/Css.astro";
+    import Git          from "../../components/svg/technologies/Git.astro";
+    import Vue          from "../../components/svg/technologies/Vue.astro";
+    import Html         from "../../components/svg/technologies/Html.astro";
+    import MySQL        from "../../components/svg/technologies/MySQL.astro";
+    import React        from "../../components/svg/technologies/React.astro";
+    import Kotlin       from "../../components/svg/technologies/Kotlin.astro";
+    import MongoDB      from "../../components/svg/technologies/MongoDB.astro";
+    import Laravel      from "../../components/svg/technologies/Laravel.astro";
+    import Tailwind     from "../../components/svg/technologies/Tailwind.astro";
+    import Boostrap     from "../../components/svg/technologies/Boostrap.astro";
+    import WordPress    from "../../components/svg/technologies/WordPress.astro";
+    import JavaScript   from "../../components/svg/technologies/JavaScript.astro";
+
+    const techComponents: { [key: string]: any } = {
+        css:          Css,
+        sass:         Css,
+        php:          Php,
+        git:          Git,
+        astro:        Web,
+        vue:          Vue,
+        html:         Html,
+        react:        React,
+        mysql:        MySQL,
+        kotlin:       Kotlin,
+        laravel:      Laravel,
+        mongodb:      MongoDB,
+        boostrap:     Boostrap,
+        tailwind:     Tailwind,
+        wordpress:    WordPress,
+        javascript:   JavaScript,
+    }
+
+
+    export async function getStaticPaths () {
+        const proyectos = await getCollection('proyectos')
+        return proyectos.map( (proyecto: any) => ({
+            params: { id: proyecto.slug },
+            props: { proyecto }
+        }) )
+
+    }
+    const { proyecto } = Astro.props
+    const { data } = proyecto
+    const { title, tech, github, images } = data
+    const { Content } = await render(proyecto)
+---
+
+<Layout>
+<div class="content">
+    <IntroductionProyect name={ title } github = { github }>
+        <Content />
+        <div class="tech">
+            <p class="title">Tecnologías utilizadas en el proyecto : </p>
+            <div>
+                { 
+                tech.map( ( t: string ) => {
+                    const Comp = techComponents[ t.toLowerCase() ]
+                    return <div class={ t.toLowerCase() } title={ t.toLowerCase() } >
+                        <Comp width="32" height="32"/>
+                        <small> { t } </small>
+                    </div>
+                } )
+                }
+            </div>
+        </div>
+    </IntroductionProyect>
+    <div>
+        {
+            images.map( ( imagen: any ) => (
+                <DescripcionProyecto imagen={ imagen } />
+            ))
+        }
+    </div>
+</div>
+</Layout>   
+
+<style>
+    *{
+        color: var(--text--color-white);
+    }
+    div.content{
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px 0 24px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    div.tech{
+        position: relative;
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    div.tech p.title{
+        opacity: .5;
+        margin: 0;
+    }
+    div.tech>div{
+        display: flex;
+        flex-direction: row;
+        border-left: 1px solid var(--text--color-white);
+    }
+    div.tech>div>div{
+        width: 90px;
+        padding: 4px;
+        border-right: 1px solid var(--text--color-white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+    div.vue:hover,
+    div.vue:hover small 
+        { color: #42b883; transition: color 0s ease-out;}
+        
+        
+    div.css:hover,
+    div.css:hover small 
+        { color: #264DE4; transition: color 0s ease-out;}
+        
+        
+    div.php:hover,
+    div.php:hover small 
+        { color: #777BB4; transition: color 0s ease-out;}
+        
+        
+    div.git:hover,
+    div.git:hover small 
+        { color: #F1502F; transition: color 0s ease-out;}
+        
+        
+    div.html:hover,
+    div.html:hover small 
+        { color: #E44D26; transition: color 0s ease-out;}
+        
+        
+    div.sass:hover,
+    div.sass:hover small 
+        { color: #CF649A; transition: color 0s ease-out;}
+        
+        
+    div.astro:hover,
+    div.astro:hover small 
+        { color: #FF5D01; transition: color 0s ease-out;}
+        
+        
+    div.react:hover,
+    div.react:hover small 
+        { color: #61DBFB; transition: color 0s ease-out;}
+        
+        
+    div.mysql:hover,
+    div.mysql:hover small 
+        { color: #00758F; transition: color 0s ease-out;}
+        
+        
+    div.kotlin:hover,
+    div.kotlin:hover small 
+        { color: #A97BFF; transition: color 0s ease-out;}
+
+
+    div.laravel:hover,
+    div.laravel:hover small 
+        { color: #FF2D20; transition: color 0s ease-out;}
+        
+        
+    div.mongodb:hover,
+    div.mongodb:hover small 
+        { color: #4DB33D; transition: color 0s ease-out;}
+        
+        
+    div.boostrap:hover,
+    div.boostrap:hover small 
+        { color: #7952B3; transition: color 0s ease-out;}
+        
+        
+    div.tailwind:hover,
+    div.tailwind:hover small 
+        { color: #38BDF8; transition: color 0s ease-out;}
+        
+        
+    div.wordpress:hover,
+    div.wordpress:hover small 
+        { color: #21759B; transition: color 0s ease-out;}
+
+
+    div.javascript:hover,
+    div.javascript:hover small 
+        { color: #F0DB4F; transition: color 0s ease-out;}
+        
+        
+</style>
