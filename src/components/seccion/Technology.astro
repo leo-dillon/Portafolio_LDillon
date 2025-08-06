@@ -17,6 +17,37 @@ import WordPress    from "../svg/technologies/WordPress.astro";
 import JavaScript   from "../svg/technologies/JavaScript.astro";
 ---
 
+<script>
+    import Close        from "../svg/Close.astro";
+    import tech         from "../../data/tech.json"
+    let listas = (document.querySelector('.tech-list'))?.querySelectorAll('li');
+    let content: any = document.querySelector('.descriptionTech')
+    let timer: any;
+    listas?.forEach(li => {
+        li.addEventListener('click', () => {
+            content.innerHTML = ""
+            content?.classList.add('active')
+            let liName = li.innerText
+            let liImg: any = li.querySelector("svg")?.cloneNode(true)
+            content?.prepend( liImg )
+            content.innerHTML += `
+                <h2 style="font-size: 26px; margin: 8px 0"> ${ liName } </h2>
+                <p style="font-size: 20px; text-align: start; opacity:0.7; margin: 8px 0; text-wrap: pretty;" > ${ tech[liName] } </p>
+                <button style="font-size: 26px;width:32px;position:absolute; top:12px; right:12px; border: none; padding: 3px; background-color: transparent; cursor: pointer; height: 42px;" class="btnClose">    
+                    ❌
+                </button>
+            `
+            content.querySelector('button').addEventListener( 'click', () => {
+                content.classList.remove('active')
+            })
+            clearTimeout( timer )
+            timer = setTimeout(() => {
+                content.classList.remove('active')
+            }, 10000 );
+        })
+    });
+</script>
+
 <section class="technologies">
     <h2>Tecnologías</h2>
     <h3><span>T</span>ECNOLOGÍAS</h3>
@@ -85,7 +116,10 @@ import JavaScript   from "../svg/technologies/JavaScript.astro";
             <Kotlin width="42" heigth="42" />
             <span> Kotlin </span>
         </li>
+        <div class="descriptionTech">
     </ul>
+
+    </div>
 </section>
 
 <style>
@@ -123,15 +157,16 @@ import JavaScript   from "../svg/technologies/JavaScript.astro";
         color: var(--text--color-yellow);
     }
     .tech-list {
-        width: 100%;
-        padding: 0;
-        margin: 12px 0;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 18px;
         list-style: none;
+        padding: 0;
+        margin: 12px 0;
+        position: relative;
     }
+
     .tech-list li {
         position: relative;
         width: 90px;
@@ -144,7 +179,11 @@ import JavaScript   from "../svg/technologies/JavaScript.astro";
         align-items: center;
         gap: 12px;
         color: var(--text--color-white);
-        transition: box-shadow 0.2s .3s ease-out, scale 0.2s .3s , color 0.2s .3s ease-out;
+        transform: translate(0, 0);
+        transition:
+            box-shadow 0.2s ease-out,
+            scale 0.2s ease-out,
+            color 0.2s ease-out,
     }
     .tech-list li:hover{
         scale: 1.1;
@@ -155,8 +194,47 @@ import JavaScript   from "../svg/technologies/JavaScript.astro";
         font-weight: bold;
         transition: color 0.2 .3s ease-out;
     }
+    .descriptionTech{
+        position: absolute;
+        top: -12px;
+        left: 0;
+        width: 0px;
+        height: 0px;
+        background-color: #1e293b; 
+        overflow: hidden;
+    }
+    .descriptionTech.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% - 40px);
+        height: 100%;
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        font-family: 'Segoe UI', sans-serif;
+        transition: 
+            transform   0.3s    ease-out, 
+            box-shadow  0.3s    ease-out,
+            width       0.1s    ease-out,
+            height      0.1s    ease-out
+        ;
+    }
 
-    
+    .descriptionTech:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .descriptionTech.active h2 {
+        color: #38bdf8; 
+    }
+
+    .descriptionTech p {
+        line-height: 1.5;
+        color: #cbd5e1;
+    }
+
     .tech-list li.tech-html:hover{ 
         color: #E44D26; 
         box-shadow: 0 0 12px #E44D26;
@@ -236,5 +314,31 @@ import JavaScript   from "../svg/technologies/JavaScript.astro";
         color: #A97BFF; 
         box-shadow: 0 0 12px #A97BFF;
     } 
+    @media (width < 700px){
+        .tech-list li{
+            width: 70px;
+        }
+        .tech-list li span{
+            font-size: 14px;
+        }
+        .tech-list li.tech-html:hover, 
+        .tech-list li.tech-css:hover, 
+        .tech-list li.tech-js:hover, 
+        .tech-list li.tech-php:hover, 
+        .tech-list li.tech-git:hover, 
+        .tech-list li.tech-sass:hover, 
+        .tech-list li.tech-boostrap:hover, 
+        .tech-list li.tech-tailwind:hover, 
+        .tech-list li.tech-astro:hover, 
+        .tech-list li.tech-react:hover, 
+        .tech-list li.tech-vue:hover, 
+        .tech-list li.tech-laravel:hover, 
+        .tech-list li.tech-mysql:hover, 
+        .tech-list li.tech-mongodb:hover, 
+        .tech-list li.tech-wordpress:hover, 
+        .tech-list li.tech-kotlin:hover{
+            scale: 1;   
+        }
 
+    }
 </style>

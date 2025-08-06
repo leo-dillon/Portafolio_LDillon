@@ -56,32 +56,32 @@
 ---
 
 <Layout>
-<div class="content">
-    <IntroductionProyect name={ title } github = { github }>
-        <Content />
-        <div class="tech">
-            <p class="title">Tecnologías utilizadas en el proyecto : </p>
-            <div>
-                { 
-                tech.map( ( t: string ) => {
-                    const Comp = techComponents[ t.toLowerCase() ]
-                    return <div class={ t.toLowerCase() } title={ t.toLowerCase() } >
-                        <Comp width="32" height="32"/>
-                        <small> { t } </small>
-                    </div>
-                } )
-                }
+    <div class="content">
+        <IntroductionProyect name={ title } github = { github }>
+            <Content />
+            <div class="tech">
+                <p class="title">Tecnologías utilizadas en el proyecto : </p>
+                <div>
+                    { 
+                    tech.map( ( t: string ) => {
+                        const Comp = techComponents[ t.toLowerCase() ]
+                        return <div class={ t.toLowerCase() } title={ t.toLowerCase() } >
+                            <Comp width="32" height="32"/>
+                            <small> { t } </small>
+                        </div>
+                    } )
+                    }
+                </div>
             </div>
+        </IntroductionProyect>
+        <div>
+            {
+                images.map( ( imagen: any ) => (
+                    <DescripcionProyecto imagen={ imagen } />
+                ))
+            }
         </div>
-    </IntroductionProyect>
-    <div>
-        {
-            images.map( ( imagen: any ) => (
-                <DescripcionProyecto imagen={ imagen } />
-            ))
-        }
     </div>
-</div>
 </Layout>   
 
 <style>

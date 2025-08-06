@@ -1,0 +1,33 @@
+{
+  "PHP": "PHP es un lenguaje de programación del lado del servidor ampliamente utilizado para desarrollar sitios web dinámicos. Permite integrar bases de datos, manejar formularios y generar contenido personalizado en tiempo real.",
+  
+  "Vue": "Vue es un framework progresivo de JavaScript diseñado para construir interfaces de usuario. Su enfoque modular y su curva de aprendizaje suave lo convierten en una excelente opción para proyectos tanto pequeños como complejos.",
+  
+  "CSS": "CSS es el lenguaje de estilos que se utiliza para controlar la presentación y el diseño de documentos HTML. Permite aplicar colores, márgenes, fuentes, animaciones y diseños responsivos en la web.",
+  
+  "Git": "Git es un sistema de control de versiones distribuido que permite registrar, seguir y fusionar cambios en el código a lo largo del tiempo. Es fundamental para trabajar en equipo y mantener la integridad de un proyecto de software.",
+  
+  "Sass": "Sass es un preprocesador de CSS que añade características como variables, funciones, anidamiento y mixins. Esto facilita la escritura de hojas de estilo más limpias, reutilizables y escalables.",
+  
+  "HTML": "HTML es el lenguaje de marcado estándar para crear la estructura y el contenido de las páginas web. Define elementos como títulos, párrafos, imágenes, enlaces y formularios.",
+  
+  "MySQL": "MySQL es un sistema de gestión de bases de datos relacional de código abierto, muy utilizado para almacenar y consultar datos estructurados en aplicaciones web. Utiliza el lenguaje SQL para gestionar la información.",
+  
+  "React": "React es una biblioteca de JavaScript desarrollada por Meta (Facebook) para construir interfaces de usuario basadas en componentes reutilizables. Facilita el manejo del estado y la actualización eficiente del DOM.",
+  
+  "Kotlin": "Kotlin es un lenguaje de programación moderno, conciso y seguro que funciona en conjunto con Java. Es utilizado principalmente para desarrollar aplicaciones Android, aunque también se aplica en backend y desarrollo multiplataforma.",
+  
+  "MongoDB": "MongoDB es una base de datos NoSQL orientada a documentos que almacena información en formato JSON flexible. Es ideal para proyectos que requieren escalabilidad y estructuras de datos dinámicas.",
+  
+  "Laravel": "Laravel es un framework de PHP con una sintaxis elegante y moderna que simplifica el desarrollo de aplicaciones web. Ofrece herramientas integradas como enrutamiento, ORM, autenticación y sistema de plantillas.",
+  
+  "Astro": "Astro es un framework moderno para construir sitios web rápidos, estáticos o híbridos, que permite usar múltiples tecnologías de frontend (como React, Vue o Svelte) en un mismo proyecto. Está optimizado para el rendimiento al enviar casi cero JavaScript por defecto al navegador.",
+  
+  "Bootstrap": "Bootstrap es un framework de CSS desarrollado por Twitter que proporciona componentes y estilos prediseñados para crear sitios web responsivos rápidamente, con un enfoque en la compatibilidad entre navegadores.",
+  
+  "Tailwind": "Tailwind CSS es un framework de utilidad que permite diseñar directamente desde el HTML usando clases pequeñas y reutilizables. Ofrece un control total sobre el estilo sin necesidad de escribir CSS personalizado.",
+  
+  "WordPress": "WordPress es un sistema de gestión de contenidos (CMS) muy popular que permite crear y administrar sitios web y blogs fácilmente. Ofrece temas y plugins que extienden su funcionalidad sin necesidad de saber programar.",
+  
+  "JavaScript": "JavaScript es un lenguaje de programación esencial para el desarrollo web que se ejecuta en el navegador del cliente. Permite crear interactividad, manejar eventos, modificar el DOM y comunicarse con servidores."
+}
