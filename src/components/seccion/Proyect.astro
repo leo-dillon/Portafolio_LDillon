@@ -38,31 +38,6 @@ const techComponents: { [key: string]: any } = {
 }
 ---
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        let a = document.querySelectorAll('a#VerImagen');
-        a.forEach( b => {
-            b.addEventListener('click', () => {
-                let modal = document.querySelector("div.modal")
-                let imagen = modal?.querySelector(".imagenes")
-				modal?.addEventListener('click', () => {
-					imagen.innerHTML = ''
-					modal.classList.remove('activado')
-					return
-				})
-                imagen.innerHTML = `
-                        <picture>
-                            <img src="${b.dataset.proyect}" alt="Home page del proyecto" title="Home page del proyecto">
-                            <small> Home page del proyecto </small>
-                            <button> Cerrar </button>
-                        </picture>
-                `
-                modal?.classList.toggle('activado')
-            })
-        })
-    });
-</script>	
-
 <section class="proyects" id="proyects">
     <h2>PROYECTOS</h2>
     <h3>
@@ -98,7 +73,9 @@ const techComponents: { [key: string]: any } = {
                                 } )
                             }
                         </div>
-                        <a href={ "proyectos/" + proyect.ruta }> Ver Más </a>
+                        <a
+                            href={ "proyectos/" + proyect.ruta }
+                        > Ver Más </a>
                         <div class="proyects_networks">
                             <a class="linkNetwork" href={ proyect.links[0].link } title={ proyect.links[0].title }>
                                 <GitHub 
@@ -263,7 +240,7 @@ const techComponents: { [key: string]: any } = {
     }
     section.proyects div.proyectContainer article div.info div.proyects_technology div.html:hover        { color: #E44D26; transition: color 0s ease-out;}     
     section.proyects div.proyectContainer article div.info div.proyects_technology div.css:hover         { color: #264DE4; transition: color 0s ease-out;}      
-    section.proyects div.proyectContainer article div.info div.proyects_technology div.javascript:hover          { color: #F0DB4F; transition: color 0s ease-out;}       
+    section.proyects div.proyectContainer article div.info div.proyects_technology div.javascript:hover  { color: #F0DB4F; transition: color 0s ease-out;}       
     section.proyects div.proyectContainer article div.info div.proyects_technology div.php:hover         { color: #777BB4; transition: color 0s ease-out;}      
     section.proyects div.proyectContainer article div.info div.proyects_technology div.git:hover         { color: #F1502F; transition: color 0s ease-out;}      
     section.proyects div.proyectContainer article div.info div.proyects_technology div.sass:hover        { color: #CF649A; transition: color 0s ease-out;}     
