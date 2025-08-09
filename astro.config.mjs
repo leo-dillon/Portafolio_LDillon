@@ -1,8 +1,19 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import mdx from '@astrojs/mdx';
+
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
+    output: 'server',
     integrations: [mdx()],
+    env: {
+        schema: {
+            RESEND_API_TOKEN: envField.string( { context: 'server', access: 'secret' } ),
+            MI_GMAIL : envField.string( { context: 'server', access: 'public' } )
+        }
+    },
+
+    adapter: vercel()
 });

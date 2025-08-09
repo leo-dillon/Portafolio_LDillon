@@ -39,12 +39,12 @@
         wordpress:    WordPress,
         javascript:   JavaScript,
     }
-
-
+    export const prerender = true;
     export async function getStaticPaths () {
+
         const proyectos = await getCollection('proyectos')
         return proyectos.map( (proyecto: any) => ({
-            params: { id: proyecto.slug },
+            params:  { id: proyecto.slug } ,
             props: { proyecto }
         }) )
 
@@ -201,5 +201,12 @@
     div.javascript:hover small 
         { color: #F0DB4F; transition: color 0s ease-out;}
         
-        
+    @media (width < 600px) {
+        div.tech p.title{
+            text-align: center;
+        }
+        div.tech>div>div{
+            width: 100%;
+        }
+    }
 </style>

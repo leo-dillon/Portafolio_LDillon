@@ -46,52 +46,71 @@ import MaxMinSize from "../svg/MaxMinSize.astro"
 </div>
 
 <style>
-div.ejemplo{
-    width: 100%;
-    margin: 24px auto;
-    padding: 24px;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    border-radius: 24px;
-    background-color: var(--background--color-light-blue-70);
-}
-div.ejemplo picture{
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-}
-div.ejemplo picture img{
-    width: 100%;
-    border-radius: 32px;
-}
-div.ejemplo picture a{
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    cursor: pointer;
-}
-div.ejemplo picture a{
+    div.ejemplo{
+        width: calc(100% - 48px);
+        margin: 24px auto;
+        padding: 24px;
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        border-radius: 24px;
+        background-color: var(--background--color-light-blue-70);
+    }
+    div.ejemplo picture{
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+    }
+    div.ejemplo picture img{
+        width: 100%;
+        border-radius: 32px;
+    }
+    div.ejemplo picture a{
         position: absolute;
-        bottom: 8px;
-        right: 8px;
+        bottom: 12px;
+        right: 12px;
         cursor: pointer;
-        transform-origin: bottom right;
-        transition: scale .1s ease-out;
-}
-div.ejemplo picture a:hover{    
-    scale: 1.3;
-}
-div.ejemplo div{
-    width: 100%;
-}
-div.ejemplo div h2{
-    margin-bottom: 12px;
-    font-size: var(--font-32);
-    color: var(--text--color-light-yellow);
-}
-div.ejemplo div p{
-    opacity: .8;
-    line-height: 1.5;
-}
+    }
+    div.ejemplo picture a{
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            cursor: pointer;
+            transform-origin: bottom right;
+            transition: scale .1s ease-out;
+    }
+    div.ejemplo picture a:hover{    
+        scale: 1.3;
+    }
+    div.ejemplo div{
+        width: 100%;
+    }
+    div.ejemplo div h2{
+        margin-bottom: 12px;
+        font-size: var(--font-32);
+        color: var(--text--color-light-yellow);
+    }
+    div.ejemplo div p{
+        opacity: .8;
+        line-height: 1.5;
+    }
+    @media (width < 900px ){
+        div.ejemplo{
+            flex-direction: column;
+        }
+        div.ejemplo picture{
+            margin: 0 auto;
+        }
+        div.ejemplo picture img{
+        }
+    }
+    @media (width < 900px ){
+        div.ejemplo{
+            width: calc(100% - 24px);
+            padding: 20px 12px;
+        }
+        div.ejemplo div h2{
+            text-align: center;
+        }
+    }
 </style>

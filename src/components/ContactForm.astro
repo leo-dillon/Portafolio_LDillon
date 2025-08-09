@@ -1,44 +1,64 @@
-<form class="contact-form">
-  <label>
-    Nombre:
-    <input type="text" name="nombre" required />
-  </label>
+---
+  import { actions } from "astro:actions";
+  const result = Astro.getActionResult( actions.send )
+---
 
-  <label>
-    Correo:
-    <input type="email" name="email" required />
-  </label>
+<form class="contact-form" method="post" action={ actions.send }>
+  
+  <div>
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required placeholder="Estaban Camello"/>
+  </div>
 
-  <label>
-    Mensaje:
-    <textarea name="mensaje" rows="5" required></textarea>
-  </label>
+  <div>
+    <label>Correo:</label>
+    <input type="email" name="email" required placeholder="estebanCamello33@gmail.com"/>
+  </div>
+  
+  <div>
+    <label>Mensaje:</label>
+    <textarea name="mensaje" rows="5" required> Este es un mensaje de ejemplo    </textarea>
+  </div>
 
-  <button type="submit">Enviar mensaje</button>
+  <button>Enviar mensaje</button>
+  {result && result.data?.success && <p class="success">✅ Mensaje enviado con éxito</p>}
+  {result && !result.data?.success && <p class="error">❌ Hubo un problema al enviar</p>}
 </form>
 <style>
     
 .contact-form {
+  width: 100%;
+  padding: 0 8px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   text-align: left;
 }
-
+.contact-form div{
+  width: 90%;
+  margin: 0 auto;
+}
 .contact-form label {
+  width: max-content;
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  color: #444;
+  line-height: 2;
+  color: var(--text--color-white);
+  opacity: .7;
 }
 
 .contact-form input,
 .contact-form textarea {
+  width: calc(100% - 24px);
   padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  margin: 0 auto;
   font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--background--color-Big-light-white);
   transition: border-color 0.2s;
+  color: white;
 }
 
 .contact-form input:focus,
@@ -48,8 +68,9 @@
 }
 
 .contact-form button {
-  align-self: flex-end;
+  width: 90%;
   padding: 10px 20px;
+  margin: 0 auto;
   background-color: #264de4;
   color: white;
   border: none;

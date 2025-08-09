@@ -78,11 +78,36 @@ import GitHub from "../svg/networks/GitHub.astro"
             padding: 0 12px;
             display: flex;
             align-items: center;
+            justify-content: center;
             background-color: var(--background--color-light-blue-70 );
         }
         div.description_proyect picture img{
             height: 64px;
             border-bottom-left-radius: 240px;
             border-bottom-right-radius: 240px;
+        }
+        @media (width < 950px){
+            div.presentacion h1{
+                font-size: var(--font-40);
+            }
+        }
+        @media (width < 600px){
+            div.presentacion h1{
+               text-align: center;
+               font-size: var(--font-24);
+           }
+            div.presentacion div{
+                display: flex;
+                flex-direction: column;
+                padding-left: 0;
+            }
+            div.description_proyect picture{
+                margin-top: 24px;
+                padding: 12px 0;
+                order: 10;
+            }
+            :global(div.markdown-content p){
+                width: 100%;
+            }
         }
     </style>

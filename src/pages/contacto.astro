@@ -1,13 +1,22 @@
 ---
-import ContactForm from '../components/ContactForm.astro'
-import Layout from '../layouts/Layout.astro'
+import ContactForm        from '../components/ContactForm.astro'
+import Layout             from '../layouts/Layout.astro'
 ---
 
 <Layout>
     <section class="contact-container">
-        <h1>¿Querés contactarte conmigo?</h1>
-        <p>Dejame tu mensaje y te respondo lo antes posible.</p>
+      <div class="text">
+        <div>
+          <h1>¿Querés contactarte conmigo?</h1>
+          <p>Dejame tu mensaje y te respondere lo antes posible.</p>
+        </div>
+        <picture>
+          <img src="../../public/pictures/a4.png" alt="">
+        </picture>
+      </div>
+      <div class="form">
         <ContactForm />
+      </div>
     </section>
 </Layout>
 
@@ -15,25 +24,61 @@ import Layout from '../layouts/Layout.astro'
 <style>
 
 .contact-container {
-  max-width: 1200px;
-  width: 100%;
-  height: 50vh;
+  display: flex;
+  gap: 32px;
+  max-width: 900px;
+  width: calc(90% - 24px);
   margin: 60px auto;
-  background: white;
-  padding: 32px;
+  padding: 32px 12px;
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-
-.contact-container h1 {
+.contact-container div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.contact-container div.form{
+  max-width: 500px;
+  background-color: var(--background--color-light-blue-70);
+  padding: 24px 0;
+  border-radius: 24px;
+}
+.contact-container div picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.contact-container div picture img{
+  width: 100%;
+  max-width: 200px;
+  border-radius: 24px;
+}
+.contact-container div h1 {
   margin-bottom: 8px;
   font-size: 28px;
-  color: #333;
+  color: var(--text--color-white);
 }
 
-.contact-container p {
+.contact-container div p {
   margin-bottom: 24px;
-  color: #666;
+  color: var(--text--color-white);
+}
+@media ( width < 700px ) {
+  .contact-container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:  4px auto;
+  }
+  .contact-container div.text{
+    flex-direction: column-reverse;
+  }
+  .contact-container div.text picture{
+    margin-bottom: 24px;
+  }
 }
 </style>
