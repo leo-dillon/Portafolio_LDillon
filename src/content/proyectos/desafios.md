@@ -6,10 +6,10 @@ github: "https://github.com/leo-dillon/Desafios"
 images:
   - url: "../../pictures/desafios_home.png"
     alt: "Home de Desafíos"
-    caption: "Este es la página de inicio al proyecto donde podrás ver los desafíos que voy realizando, en la parte de abajo podrás observar una lista de los desafíos antes mencionados."
+    caption: "Este es el punto de partida del proyecto Desafíos de Programación. Aquí encontrarás todos los retos que voy resolviendo, organizados en tres niveles de dificultad: Fácil, Medio y Difícil. Podrás conocer cuántos desafíos he completado, filtrarlos por nivel y explorarlos en el orden en que fueron realizados."
   - url: "../../pictures/desafios_ej.png"
-    alt: "Ejercicio resuelto"
-    caption: "Cuando abres un desafío podrás ver el título, el enunciado del ejercicio, como resolví dichos desafíos y una demostración de su funcionamiento."
+    alt: "Modal del Ejercicio resuelto"
+    caption: "Al abrir un desafío, se mostrará un modal con el título, un enlace directo a LeetCode, la descripción del reto y algunos ejemplos de las variables requeridas. También encontrarás mi solución paso a paso y un área interactiva donde podrás ejecutar el código para ver cómo funciona."
 ---
 
 

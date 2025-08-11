@@ -1,43 +1,10 @@
 ---
-import MaxMinSize from "../svg/MaxMinSize.astro"
-
  const { imagen } = Astro.props
 ---
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        let a = document.querySelectorAll('a#VerImagen');
-        a.forEach( b => {
-            b.addEventListener('click', () => {
-                let modal = document.querySelector("div.modal")
-                let imagen = modal?.querySelector(".imagenes")
-				modal?.addEventListener('click', () => {
-					imagen.innerHTML = ''
-					modal.classList.remove('activado')
-					return
-				})
-                imagen.innerHTML = `
-                        <picture>
-                            <img src="${b.dataset.proyect}" alt="Home page del proyecto" title="Home page del proyecto">
-                            <button> Cerrar </button>
-                        </picture>
-                `
-                modal?.classList.toggle('activado')
-            })
-        })
-    });
-</script>
-
 <div class="ejemplo">
     <picture>
-        <img src={ imagen.url } alt={ imagen.alt } >
-        <a id="VerImagen" title="Ver Imagen" data-proyect={ imagen.url }>
-            <MaxMinSize
-                width="32" 
-                heigth="32" 
-                color="var(--hover--color-white)"
-            />
-        </a>
+        <img src={ imagen.url } alt={ imagen.alt } >    
     </picture>
     <div>
         <h2> { imagen.alt } </h2>

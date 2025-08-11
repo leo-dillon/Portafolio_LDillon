@@ -3,6 +3,8 @@
     import Close from "./svg/Close.astro"
     import Menu from "./svg/Menu.astro"
 ---
+
+
 <div class="contenedorNavBar desktop close">
     <button class="btnMenu">
         <Menu 
@@ -155,36 +157,41 @@
 </style>
 
 <script>
-    let contentcontenedorNavBar = document.querySelector('div.contenedorNavBar')
-    let btnMenu = document.querySelector('button.btnMenu')
-    let btnClose = document.querySelector('button.btnClose')
-    let nav = document.querySelector('nav')
+function checkViewWidth() {
+    let viewWidth = window.innerWidth
+    if (viewWidth < 550) {
+        contentcontenedorNavBar?.classList.remove("desktop")
+    } else {
+        contentcontenedorNavBar?.classList.add("desktop")
+    }
+}
+
+let contentcontenedorNavBar = document.querySelector('div.contenedorNavBar')
+let btnMenu = document.querySelector('button.btnMenu')
+let btnClose = document.querySelector('button.btnClose')
+let nav = document.querySelector('nav')
+
+function initMenuEvents() {
+    btnMenu = document.querySelector('button.btnMenu')
+    btnClose = document.querySelector('button.btnClose')
+    nav = document.querySelector('nav')
     let ancords = document.querySelectorAll('nav a')
-    window.addEventListener('load', () => {
-        let viewWidth = window.innerWidth
-        if(viewWidth < 550){
-            contentcontenedorNavBar?.classList.remove("desktop")
-        }else{
-            contentcontenedorNavBar?.classList.add("desktop")
-        }
-    })
-    window.addEventListener('resize', () => {
-        let viewWidth = window.innerWidth
-        if(viewWidth < 550){
-            contentcontenedorNavBar?.classList.remove("desktop")
-        }else{
-            contentcontenedorNavBar?.classList.add("desktop")
-        }
-    })
-    btnMenu?.addEventListener('click', (e) => {
-        nav?.classList.add('open')
-    })
-    btnClose?.addEventListener('click', () => {
-        nav?.classList.remove('open')
-    })
-    ancords.forEach(a => {
-        a.addEventListener("click", (e) => {
-            nav?.classList.remove('open')
-        })
-    })
+
+    btnMenu?.addEventListener('click', () => nav?.classList.add('open'))
+    btnClose?.addEventListener('click', () => nav?.classList.remove('open'))
+    ancords.forEach(a => a.addEventListener('click', () => nav?.classList.remove('open')))
+}
+
+window.addEventListener('resize', checkViewWidth)
+window.addEventListener('load', () => {
+    checkViewWidth()
+    initMenuEvents()
+})
+
+// Cuando se complete un cambio de página
+document.addEventListener('astro:after-swap', () => {
+    contentcontenedorNavBar = document.querySelector('div.contenedorNavBar')
+    checkViewWidth()
+    initMenuEvents()
+})
 </script>
