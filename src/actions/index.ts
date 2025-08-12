@@ -1,9 +1,10 @@
 import { defineAction } from "astro:actions";
 import { z } from "astro:content";
 import { Resend } from "resend";
-import { getSecret, MI_GMAIL } from "astro:env/server";
+import { getSecret } from "astro:env/server";
 
 const resend_key = getSecret("RESEND_API_TOKEN");
+const resend_gmail = getSecret("MI_GMAIL");
 const resend = new Resend(resend_key);
 
 export const server = {
@@ -18,7 +19,7 @@ export const server = {
       try {
         const { data, error } = await resend.emails.send({
           from: nombre + " <onboarding@resend.dev>", 
-          to: [MI_GMAIL],
+          to: [resend_gmail],
           subject: "Portafolio LDillon",
           html: `
             <div>
@@ -39,7 +40,7 @@ export const server = {
           from: "Leonardo Dillon <onboarding@resend.dev>", 
           to: [ email ],
           subject: "Mail recibido",
-          replyTo: [ MI_GMAIL ],
+          replyTo: [ resend_gmail ],
           html: `
             <div>
               <h1>Gracias por enviar un mail</h1>

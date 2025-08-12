@@ -1,11 +1,11 @@
 import './chunks/_astro_actions_CjkbmbZz.mjs';
-import './chunks/_astro_content_DG2LvDKd.mjs';
+import './chunks/_astro_content_BdT1oxuf.mjs';
 import { Resend } from 'resend';
 import { c as createInvalidVariablesError, g as getEnv$1, s as setOnSetGetEnv } from './chunks/runtime_Uyj9hRzF.mjs';
 import { d as defineAction } from './chunks/server_B_FnIbRg.mjs';
 import * as z from 'zod';
 
-const schema = {"RESEND_API_TOKEN":{"context":"server","access":"secret","type":"string"},"MI_GMAIL":{"context":"server","access":"public","type":"string"}};
+const schema = {"RESEND_API_TOKEN":{"context":"server","access":"secret","type":"string"},"MI_GMAIL":{"context":"server","access":"secret","type":"string"}};
 
 function getEnvFieldType(options) {
   const optional = options.optional ? options.default !== void 0 ? false : true : false;
@@ -180,11 +180,14 @@ const _internalGetSecret = (key) => {
 
 setOnSetGetEnv(() => {
 	_internalGetSecret("RESEND_API_TOKEN");
+_internalGetSecret("MI_GMAIL");
 
 });
-const MI_GMAIL = "jeannotegui@gmail.com";_internalGetSecret("RESEND_API_TOKEN");
+_internalGetSecret("RESEND_API_TOKEN");
+_internalGetSecret("MI_GMAIL");
 
 const resend_key = getSecret("RESEND_API_TOKEN");
+const resend_gmail = getSecret("MI_GMAIL");
 const resend = new Resend(resend_key);
 const server = {
   send: defineAction({
@@ -198,7 +201,7 @@ const server = {
       try {
         const { data, error } = await resend.emails.send({
           from: nombre + " <onboarding@resend.dev>",
-          to: [MI_GMAIL],
+          to: [resend_gmail],
           subject: "Portafolio LDillon",
           html: `
             <div>
@@ -217,7 +220,7 @@ const server = {
           from: "Leonardo Dillon <onboarding@resend.dev>",
           to: [email],
           subject: "Mail recibido",
-          replyTo: [MI_GMAIL],
+          replyTo: [resend_gmail],
           html: `
             <div>
               <h1>Gracias por enviar un mail</h1>

@@ -2,7 +2,7 @@
 import { defineConfig, envField } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,9 +11,9 @@ export default defineConfig({
     env: {
         schema: {
             RESEND_API_TOKEN: envField.string( { context: 'server', access: 'secret' } ),
-            MI_GMAIL : envField.string( { context: 'server', access: 'public' } )
+            MI_GMAIL : envField.string( { context: 'server', access: 'secret' } )
         }
     },
 
-    adapter: vercel({})
+    adapter: vercel()
 });
