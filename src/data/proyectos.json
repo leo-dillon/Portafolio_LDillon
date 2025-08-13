@@ -15,14 +15,14 @@
         "img": [
             {
                 "id": 1,
-                "url": "../../../public/pictures/desafios_home.png",
+                "url": "/pictures/desafios_home.png",
                 "title": "Home a proyecto Desafiós",
                 "text": "Home del proyecto Desafiós"
             }
             ,
             {
                 "id": 2,
-                "url": "../../../public/pictures/desafios_ej.png",
+                "url": "/pictures/desafios_ej.png",
                 "title": "Ejemplo de desafió resuelto",
                 "text": "Ejemplo de desafió resuelto"
             }
