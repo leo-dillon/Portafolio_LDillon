@@ -7,7 +7,7 @@ import vercel from '@astrojs/vercel/serverless';
 // https://astro.build/config
 export default defineConfig({
     output: 'server',
-        
+    integrations: [mdx()],
     env: {
         schema: {
             RESEND_API_TOKEN: envField.string( { context: 'server', access: 'secret' } ),

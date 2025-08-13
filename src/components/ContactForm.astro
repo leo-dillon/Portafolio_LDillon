@@ -1,31 +1,109 @@
----
-  import { actions } from "astro:actions";
-  const result = Astro.getActionResult( actions.send )
----
+<script>
+  async function formSubmit( e:Event ){
+    e.preventDefault()
+    let form = e.target as HTMLFormElement
+    let form_data = new FormData( form )
 
-<form class="contact-form" method="post" action={ actions.send }>
+    try {
+      const button = document.querySelector('.btnSubmit')
+      button?.setAttribute('disabled', 'true')
+      button.innerHTML = 'Enviando...'
+
+      let response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Object.fromEntries(form_data))
+      })
+      let result = await response.json()
+
+      const modal = document.querySelector('.modal')
+      if( result.envio ){
+        modal?.classList.add('active')
+        if(modal) modal.innerHTML = `<p class="success">✅ ${result.message}</p>`
+        button.innerHTML = 'Mensaje enviado'
+      } 
+        else 
+      {
+        modal?.classList.add('active')
+        if(modal) modal.innerHTML = `<p class="error">❌ ${result.message}</p>`
+        button?.classList.add('error')
+        button.innerHTML = 'Error al enviar el mensaje'
+        setTimeout( () => {
+          button?.removeAttribute('disabled')
+          button?.classList.remove('error')
+          button.innerHTML = 'Enviar mensaje'
+        }, 1500 )
+      }
+
+      setTimeout( () => {
+        modal?.classList.remove('active')
+      }, 3000)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  function formEvent(){
+    let form = document.querySelector('form.contact-form')
+    if(!form) return
+    form.removeEventListener('submit', formSubmit)
+    form.addEventListener('submit', formSubmit)
+  }
+
+  formEvent()
+  
+  document.addEventListener('astro:after-swap', () => {
+    formEvent()
+  })
+
+</script>
+
+<div class="modal">
+
+</div>
+<form class="contact-form" method="post">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" required placeholder="Estaban Camello" value="Estaban Camello"/>
+  </div>
+
+  <div>
+    <label for="email">Correo:</label>
+    <input type="email" name="email" id="email" required  placeholder="estebanCamello33@gmail.com" value="estebanCamello33@gmail.com"/>
+  </div>
   
   <div>
-    <label>Nombre:</label>
-    <input type="text" name="nombre" required placeholder="Estaban Camello"/>
+    <label for="mensaje">Mensaje:</label>
+    <textarea name="mensaje" id="mensaje" rows="5" required>  AA  </textarea>
   </div>
 
-  <div>
-    <label>Correo:</label>
-    <input type="email" name="email" required placeholder="estebanCamello33@gmail.com"/>
-  </div>
-  
-  <div>
-    <label>Mensaje:</label>
-    <textarea name="mensaje" rows="5" required> Este es un mensaje de ejemplo    </textarea>
-  </div>
-
-  <button>Enviar mensaje</button>
-  {result && result.data?.success && <p class="success">✅ Mensaje enviado con éxito</p>}
-  {result && !result.data?.success && <p class="error">❌ Hubo un problema al enviar</p>}
+  <button class="btnSubmit">Enviar mensaje</button>
 </form>
 <style>
-    
+  
+
+.modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: var(--background--color-light-blue);
+  font-size: var(--font-20);
+  color: var(--text--color-white);
+  padding: 16px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  z-index: 100;
+  overflow: hidden;
+  transform:  translateX(100%);
+  transition: transform .3s ease-out;
+}
+.modal.active {
+  transform: translateX(0);
+  box-shadow: -2px 2px 8px var(--text--color-white);
+}
 .contact-form {
   width: 100%;
   padding: 0 8px;
@@ -50,6 +128,7 @@
 
 .contact-form input,
 .contact-form textarea {
+  resize: none;
   width: calc(100% - 24px);
   padding: 10px 12px;
   margin: 0 auto;
@@ -79,7 +158,13 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
+.contact-form button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(30, 59, 30);
+}
+.contact-form button.error {
+  background-color: rgb(97, 27, 27);
+}
 .contact-form button:hover {
   background-color: #1b39a5;
 }
